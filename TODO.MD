@@ -1,0 +1,5 @@
+- [ ] can i make a parent triangle class with conditional black and white asset loaded
+- [ ] networking design? single server or peer to peer hosting and joining
+- [ ] the cross 2 triangle block is not readily intuitive
+    - [ ] smaller block seperating borders
+- [ ] make sure to add comments everywher for easier future understanding
