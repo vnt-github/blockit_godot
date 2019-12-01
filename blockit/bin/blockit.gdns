@@ -3,7 +3,7 @@
 [ext_resource path="res://bin/blockit.gdnlib" type="GDNativeLibrary" id=1]
 
 [resource]
-
 resource_name = "triangle"
 class_name = "Triangle"
 library = ExtResource( 1 )
+

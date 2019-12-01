@@ -11,4 +11,4 @@ Windows.64="res://bin/win64/lib_blockit.dll"
 
 [dependencies]
 
-Windows.64=[]
+Windows.64=[  ]

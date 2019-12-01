@@ -12,6 +12,9 @@ zconf.h.included
 *.lib
 *.obj
 *.TMP
+*.idb
+*.pdb
 logs
 Thumbs.db
 godot/-cpp
+*.vscode
