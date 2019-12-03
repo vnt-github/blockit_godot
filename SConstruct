@@ -85,7 +85,7 @@ elif env['platform'] == "windows":
         env.Append(CPPDEFINES=['NDEBUG'])
         # QUERY: what is diff btw -MD and -MDd
         # original: env.Append(CCFLAGS=['-O2', '-EHsc', '-MD']) gives error blockit_godot\errors\scons-build-MDd.error 
-
+        # HACK: -MDd is used in place of -MD for ubisoft machine, figure it, it causes only target=debug probably
         env.Append(CCFLAGS=['-O2', '-EHsc', '-MDd'])
 
 if env['target'] in ('debug', 'd'):

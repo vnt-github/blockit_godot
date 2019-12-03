@@ -16,6 +16,10 @@ void Block::_register_methods() {
     register_method("_init", &Block::_init);
 }
 
+Block::Block() {}
+
+Block::~Block() {}
+
 void Block::_init() {
 }
 
