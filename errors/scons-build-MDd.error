@@ -1,0 +1,20 @@
+C:\godot\blockit_godot>scons platform=windows
+scons: Reading SConscript files ...
+scons: done reading SConscript files.
+scons: Building targets ...
+cl /Fosrc\block.obj /c src\block.cpp /TP /nologo -W3 -GR -O2 -EHsc -MD -ZI /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /I. /Igodot-cpp\godot_headers /Igodot-cpp\include /Igodot-cpp\include\core /Igodot-cpp\include\gen /Isrc
+block.cpp
+cl /Fosrc\gdlibrary.obj /c src\gdlibrary.cpp /TP /nologo -W3 -GR -O2 -EHsc -MD -ZI /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /I. /Igodot-cpp\godot_headers /Igodot-cpp\include /Igodot-cpp\include\core /Igodot-cpp\include\gen /Isrc
+gdlibrary.cpp
+cl /Fosrc\grid.obj /c src\grid.cpp /TP /nologo -W3 -GR -O2 -EHsc -MD -ZI /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /I. /Igodot-cpp\godot_headers /Igodot-cpp\include /Igodot-cpp\include\core /Igodot-cpp\include\gen /Isrc
+grid.cpp
+cl /Fosrc\triangle.obj /c src\triangle.cpp /TP /nologo -W3 -GR -O2 -EHsc -MD -ZI /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /I. /Igodot-cpp\godot_headers /Igodot-cpp\include /Igodot-cpp\include\core /Igodot-cpp\include\gen /Isrc
+triangle.cpp
+link /nologo -DEBUG /dll /out:blockit\bin\win64\lib_blockit.dll /implib:blockit\bin\win64\lib_blockit.lib /LIBPATH:godot-cpp\bin godot-cpp.windows.64.lib src\block.obj src\gdlibrary.obj src\grid.obj src\triangle.obj
+   Creating library blockit\bin\win64\lib_blockit.lib and object blockit\bin\win64\lib_blockit.exp
+LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+godot-cpp.windows.64.lib(TagDB.obj) : error LNK2019: unresolved external symbol __imp__invalid_parameter referenced in function "void * __cdecl std::_Allocate_manually_vector_aligned<struct std::_Default_allocate_traits>(unsigned __int64)" (??$_Allocate_manually_vector_aligned@U_Default_allocate_traits@std@@@std@@YAPEAX_K@Z)
+godot-cpp.windows.64.lib(TagDB.obj) : error LNK2019: unresolved external symbol __imp__CrtDbgReport referenced in function "void * __cdecl std::_Allocate_manually_vector_aligned<struct std::_Default_allocate_traits>(unsigned __int64)" (??$_Allocate_manually_vector_aligned@U_Default_allocate_traits@std@@@std@@YAPEAX_K@Z)
+blockit\bin\win64\lib_blockit.dll : fatal error LNK1120: 2 unresolved externals
+scons: *** [blockit\bin\win64\lib_blockit.dll] Error 1120
+scons: building terminated because of errors.

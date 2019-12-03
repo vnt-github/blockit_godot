@@ -1,3 +1,9 @@
+# NOTE: pros: more generalized script
+#       cons: 1. cant only run from vs code tools(Native tool, cross tool) with administrator mode
+#             2. poor target_path handling and strict debug or release tag check
+#             3. dependency on cl so can't run from git bash or cmd
+#             4. can't run from cmd cos stdbool.h not found
+#             5. can't run from vs developers console, cos gives unresolved exeternals error LNK2xx errors
 #!python
 import os, subprocess
 
@@ -52,21 +58,21 @@ if env['platform'] == "osx":
     env['target_path'] += 'osx/'
     cpp_library += '.osx'
     if env['target'] in ('debug', 'd'):
-        env.Append(CCFLAGS = ['-g','-O2', '-arch', 'x86_64', '-std=c++14'])
+        env.Append(CCFLAGS = ['-g','-O2', '-arch', 'x86_64', '-std=c++17'])
         env.Append(LINKFLAGS = ['-arch', 'x86_64'])
     else:
-        env.Append(CCFLAGS = ['-g','-O3', '-arch', 'x86_64', '-std=c++14'])
+        env.Append(CCFLAGS = ['-g','-O3', '-arch', 'x86_64', '-std=c++17'])
         env.Append(LINKFLAGS = ['-arch', 'x86_64'])
 
 elif env['platform'] in ('x11', 'linux'):
     env['target_path'] += 'x11/'
     cpp_library += '.linux'
     if env['target'] in ('debug', 'd'):
-        env.Append(CCFLAGS = ['-fPIC', '-g3','-Og', '-std=c++14'])
-        env.Append(CXXFLAGS=['-std=c++14'])
+        env.Append(CCFLAGS = ['-fPIC', '-g3','-Og', '-std=c++17'])
+        env.Append(CXXFLAGS=['-std=c++17'])
     else:
-        env.Append(CCFLAGS = ['-fPIC', '-g','-O3', '-std=c++14'])
-        env.Append(CXXFLAGS=['-std=c++14'])
+        env.Append(CCFLAGS = ['-fPIC', '-g','-O3', '-std=c++17'])
+        env.Append(CXXFLAGS=['-std=c++17'])
 
 elif env['platform'] == "windows":
     env['target_path'] += 'win64/'
