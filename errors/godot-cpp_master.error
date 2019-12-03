@@ -1,0 +1,58 @@
+vbharot@PUN-WKS-AC905 MINGW64 /c/godot/blockit_godot/godot-cpp (master)
+$ scons generate_bindings=yes bits=64 platform=windows
+scons: Reading SConscript files ...
+scons: done reading SConscript files.
+scons: Building targets ...
+cl /Fosrc\core\AABB.obj /c src\core\AABB.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+AABB.cpp
+cl /Fosrc\core\Array.obj /c src\core\Array.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Array.cpp
+cl /Fosrc\core\Basis.obj /c src\core\Basis.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Basis.cpp
+cl /Fosrc\core\Color.obj /c src\core\Color.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Color.cpp
+cl /Fosrc\core\Dictionary.obj /c src\core\Dictionary.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Dictionary.cpp
+cl /Fosrc\core\GodotGlobal.obj /c src\core\GodotGlobal.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+GodotGlobal.cpp
+cl /Fosrc\core\NodePath.obj /c src\core\NodePath.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+NodePath.cpp
+cl /Fosrc\core\Plane.obj /c src\core\Plane.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Plane.cpp
+cl /Fosrc\core\PoolArrays.obj /c src\core\PoolArrays.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+PoolArrays.cpp
+cl /Fosrc\core\Quat.obj /c src\core\Quat.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Quat.cpp
+cl /Fosrc\core\Rect2.obj /c src\core\Rect2.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Rect2.cpp
+cl /Fosrc\core\RID.obj /c src\core\RID.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+RID.cpp
+cl /Fosrc\core\String.obj /c src\core\String.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+String.cpp
+cl /Fosrc\core\TagDB.obj /c src\core\TagDB.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+TagDB.cpp
+cl /Fosrc\core\Transform.obj /c src\core\Transform.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Transform.cpp
+cl /Fosrc\core\Transform2D.obj /c src\core\Transform2D.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Transform2D.cpp
+cl /Fosrc\core\Variant.obj /c src\core\Variant.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Variant.cpp
+cl /Fosrc\core\Vector2.obj /c src\core\Vector2.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Vector2.cpp
+cl /Fosrc\core\Vector3.obj /c src\core\Vector3.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Vector3.cpp
+cl /Fosrc\gen\AcceptDialog.obj /c src\gen\AcceptDialog.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+AcceptDialog.cpp
+cl /Fosrc\gen\AnimatedSprite.obj /c src\gen\AnimatedSprite.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+AnimatedSprite.cpp
+cl /Fosrc\gen\AnimatedSprite3D.obj /c src\gen\AnimatedSprite3D.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+AnimatedSprite3D.cpp
+cl /Fosrc\gen\AnimatedTexture.obj /c src\gen\AnimatedTexture.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+AnimatedTexture.cpp
+cl /Fosrc\gen\Animation.obj /c src\gen\Animation.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+Animation.cpp
+cl /Fosrc\gen\AnimationNode.obj /c src\gen\AnimationNode.cpp /TP /nologo /Z7 /Od /EHsc /D_DEBUG /MDd /I. /Igodot_headers /Iinclude /Iinclude\gen /Iinclude\core
+AnimationNode.cpp
+src\gen\AnimationNode.cpp(71): error C3861: '___godot_icall_float_String_Object_float_bool_float_int_bool': identifier not found
+scons: *** [src\gen\AnimationNode.obj] Error 2
+scons: building terminated because of errors.
