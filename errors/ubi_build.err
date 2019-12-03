@@ -1,0 +1,54 @@
+scons: Reading SConscript files ...
+scons: done reading SConscript files.
+scons: Building targets ...
+cl /Fosrc\block.obj /c src\block.cpp /TP /nologo -W3 -GR -EHsc -MDd -ZI /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /I. /Igodot-cpp\godot_headers /Igodot-cpp\include /Igodot-cpp\include\core /Igodot-cpp\include\gen /Isrc
+block.cpp
+c:\godot\blockit_godot\godot-cpp\include\core\vector2.hpp(214): warning C4244: 'argument': conversion from 'double' to 'real_t', possible loss of data
+c:\godot\blockit_godot\godot-cpp\include\core\vector2.hpp(213): warning C4244: 'argument': conversion from 'double' to 'real_t', possible loss of data
+cl /Fosrc\gdlibrary.obj /c src\gdlibrary.cpp /TP /nologo -W3 -GR -EHsc -MDd -ZI /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /I. /Igodot-cpp\godot_headers /Igodot-cpp\include /Igodot-cpp\include\core /Igodot-cpp\include\gen /Isrc
+gdlibrary.cpp
+c:\godot\blockit_godot\godot-cpp\include\core\vector2.hpp(214): warning C4244: 'argument': conversion from 'double' to 'real_t', possible loss of data
+c:\godot\blockit_godot\godot-cpp\include\core\vector2.hpp(213): warning C4244: 'argument': conversion from 'double' to 'real_t', possible loss of data
+cl /Fosrc\grid.obj /c src\grid.cpp /TP /nologo -W3 -GR -EHsc -MDd -ZI /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /I. /Igodot-cpp\godot_headers /Igodot-cpp\include /Igodot-cpp\include\core /Igodot-cpp\include\gen /Isrc
+grid.cpp
+c:\godot\blockit_godot\godot-cpp\include\core\vector2.hpp(214): warning C4244: 'argument': conversion from 'double' to 'real_t', possible loss of data
+c:\godot\blockit_godot\godot-cpp\include\core\vector2.hpp(213): warning C4244: 'argument': conversion from 'double' to 'real_t', possible loss of data
+cl /Fosrc\triangle.obj /c src\triangle.cpp /TP /nologo -W3 -GR -EHsc -MDd -ZI /DWIN32 /D_WIN32 /D_WINDOWS /D_CRT_SECURE_NO_WARNINGS /D_DEBUG /I. /Igodot-cpp\godot_headers /Igodot-cpp\include /Igodot-cpp\include\core /Igodot-cpp\include\gen /Isrc
+triangle.cpp
+c:\godot\blockit_godot\godot-cpp\include\core\vector2.hpp(214): warning C4244: 'argument': conversion from 'double' to 'real_t', possible loss of data
+c:\godot\blockit_godot\godot-cpp\include\core\vector2.hpp(213): warning C4244: 'argument': conversion from 'double' to 'real_t', possible loss of data
+link /nologo -DEBUG /dll /out:blockit\bin\win64\lib_blockit.dll /implib:blockit\bin\win64\lib_blockit.lib /LIBPATH:godot-cpp\bin libgodot-cpp.windows.debug.64.lib src\block.obj src\gdlibrary.obj src\grid.obj src\triangle.obj
+   Creating library blockit\bin\win64\lib_blockit.lib and object blockit\bin\win64\lib_blockit.exp
+block.obj : error LNK2019: unresolved external symbol "public: __thiscall godot::Variant::Variant(class godot::Variant const &)" (??0Variant@godot@@QAE@ABV01@@Z) referenced in function "public: void __thiscall godot::_WrappedMethod<class godot::Block,void,float>::apply<0>(class godot::Variant *,class godot::Block *,class godot::Variant * *,struct godot::__Sequence<0>)" (??$apply@$0A@@?$_WrappedMethod@VBlock@godot@@XM@godot@@QAEXPAVVariant@1@PAVBlock@1@PAPAV21@U?$__Sequence@$0A@@1@@Z)
+grid.obj : error LNK2001: unresolved external symbol "public: __thiscall godot::Variant::Variant(class godot::Variant const &)" (??0Variant@godot@@QAE@ABV01@@Z)
+triangle.obj : error LNK2001: unresolved external symbol "public: __thiscall godot::Variant::Variant(class godot::Variant const &)" (??0Variant@godot@@QAE@ABV01@@Z)
+block.obj : error LNK2019: unresolved external symbol "public: __thiscall godot::Variant::operator float(void)const " (??BVariant@godot@@QBEMXZ) referenced in function "public: static float __cdecl godot::_ArgCast<float>::_arg_cast(class godot::Variant)" (?_arg_cast@?$_ArgCast@M@godot@@SAMVVariant@2@@Z)
+grid.obj : error LNK2001: unresolved external symbol "public: __thiscall godot::Variant::operator float(void)const " (??BVariant@godot@@QBEMXZ)
+triangle.obj : error LNK2001: unresolved external symbol "public: __thiscall godot::Variant::operator float(void)const " (??BVariant@godot@@QBEMXZ)
+block.obj : error LNK2019: unresolved external symbol "public: __thiscall godot::Variant::~Variant(void)" (??1Variant@godot@@QAE@XZ) referenced in function "public: static float __cdecl godot::_ArgCast<float>::_arg_cast(class godot::Variant)" (?_arg_cast@?$_ArgCast@M@godot@@SAMVVariant@2@@Z)
+grid.obj : error LNK2001: unresolved external symbol "public: __thiscall godot::Variant::~Variant(void)" (??1Variant@godot@@QAE@XZ)
+triangle.obj : error LNK2001: unresolved external symbol "public: __thiscall godot::Variant::~Variant(void)" (??1Variant@godot@@QAE@XZ)
+block.obj : error LNK2001: unresolved external symbol _api
+grid.obj : error LNK2001: unresolved external symbol _api
+triangle.obj : error LNK2001: unresolved external symbol _api
+block.obj : error LNK2001: unresolved external symbol _nativescript_api
+gdlibrary.obj : error LNK2001: unresolved external symbol _nativescript_api
+grid.obj : error LNK2001: unresolved external symbol _nativescript_api
+triangle.obj : error LNK2001: unresolved external symbol _nativescript_api
+block.obj : error LNK2001: unresolved external symbol "public: static void * godot::_RegisterState::nativescript_handle" (?nativescript_handle@_RegisterState@godot@@2PAXA)
+gdlibrary.obj : error LNK2001: unresolved external symbol "public: static void * godot::_RegisterState::nativescript_handle" (?nativescript_handle@_RegisterState@godot@@2PAXA)
+grid.obj : error LNK2001: unresolved external symbol "public: static void * godot::_RegisterState::nativescript_handle" (?nativescript_handle@_RegisterState@godot@@2PAXA)
+triangle.obj : error LNK2001: unresolved external symbol "public: static void * godot::_RegisterState::nativescript_handle" (?nativescript_handle@_RegisterState@godot@@2PAXA)
+gdlibrary.obj : error LNK2019: unresolved external symbol "public: static void __cdecl godot::Godot::gdnative_init(struct godot_gdnative_init_options *)" (?gdnative_init@Godot@godot@@SAXPAUgodot_gdnative_init_options@@@Z) referenced in function _godot_gdnative_init
+gdlibrary.obj : error LNK2019: unresolved external symbol "public: static void __cdecl godot::Godot::gdnative_terminate(struct godot_gdnative_terminate_options *)" (?gdnative_terminate@Godot@godot@@SAXPAUgodot_gdnative_terminate_options@@@Z) referenced in function _godot_gdnative_terminate
+gdlibrary.obj : error LNK2019: unresolved external symbol "public: static void __cdecl godot::Godot::nativescript_init(void *)" (?nativescript_init@Godot@godot@@SAXPAX@Z) referenced in function _godot_nativescript_init
+gdlibrary.obj : error LNK2019: unresolved external symbol "void __cdecl godot::_TagDB::register_type(unsigned int,unsigned int)" (?register_type@_TagDB@godot@@YAXII@Z) referenced in function "void __cdecl godot::register_class<class godot::Triangle>(void)" (??$register_class@VTriangle@godot@@@godot@@YAXXZ)
+gdlibrary.obj : error LNK2001: unresolved external symbol _nativescript_1_1_api
+grid.obj : error LNK2019: unresolved external symbol "public: __thiscall godot::Variant::Variant(bool)" (??0Variant@godot@@QAE@_N@Z) referenced in function "public: void __thiscall godot::_WrappedMethod<class godot::Grid,bool,int>::apply<0>(class godot::Variant *,class godot::Grid *,class godot::Variant * *,struct godot::__Sequence<0>)" (??$apply@$0A@@?$_WrappedMethod@VGrid@godot@@_NH@godot@@QAEXPAVVariant@1@PAVGrid@1@PAPAV21@U?$__Sequence@$0A@@1@@Z)
+grid.obj : error LNK2019: unresolved external symbol "public: __thiscall godot::Variant::Variant(int)" (??0Variant@godot@@QAE@H@Z) referenced in function "public: void __thiscall godot::_WrappedMethod<class godot::Grid,int>::apply<>(class godot::Variant *,class godot::Grid *,class godot::Variant * *,struct godot::__Sequence<>)" (??$apply@$S@?$_WrappedMethod@VGrid@godot@@H$$V@godot@@QAEXPAVVariant@1@PAVGrid@1@PAPAV21@U?$__Sequence@$S@1@@Z)
+grid.obj : error LNK2019: unresolved external symbol "public: class godot::Variant & __thiscall godot::Variant::operator=(class godot::Variant const &)" (??4Variant@godot@@QAEAAV01@ABV01@@Z) referenced in function "public: void __thiscall godot::_WrappedMethod<class godot::Grid,bool,int>::apply<0>(class godot::Variant *,class godot::Grid *,class godot::Variant * *,struct godot::__Sequence<0>)" (??$apply@$0A@@?$_WrappedMethod@VGrid@godot@@_NH@godot@@QAEXPAVVariant@1@PAVGrid@1@PAPAV21@U?$__Sequence@$0A@@1@@Z)
+grid.obj : error LNK2019: unresolved external symbol "public: __thiscall godot::Variant::operator int(void)const " (??BVariant@godot@@QBEHXZ) referenced in function "public: static int __cdecl godot::_ArgCast<int>::_arg_cast(class godot::Variant)" (?_arg_cast@?$_ArgCast@H@godot@@SAHVVariant@2@@Z)
+godot-cpp\bin\libgodot-cpp.windows.debug.64.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+blockit\bin\win64\lib_blockit.dll : fatal error LNK1120: 15 unresolved externals
+scons: *** [blockit\bin\win64\lib_blockit.dll] Error 1120
+scons: building terminated because of errors.
