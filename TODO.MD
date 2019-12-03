@@ -3,3 +3,4 @@
 - [ ] the cross 2 triangle block is not readily intuitive
     - [ ] smaller block seperating borders
 - [ ] make sure to add comments everywher for easier future understanding
+- [ ] hearthstone server and online setup
