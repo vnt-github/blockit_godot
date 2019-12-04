@@ -14,6 +14,7 @@ using namespace godot;
 void Block::_register_methods() {
     register_method("_process", &Block::_process);
     register_method("_init", &Block::_init);
+    register_method("b_method", &Block::b_method);
 }
 
 Block::Block() {}
@@ -26,3 +27,5 @@ void Block::_init() {
 void Block::_process(float delta) {
 
 }
+
+String Block::b_method() { return "b_method_data"; }

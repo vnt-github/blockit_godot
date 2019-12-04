@@ -17,6 +17,8 @@ namespace godot {
             void _init();
 
             void _process(float delta);
+
+            String t_method();
     };
 }
 #endif

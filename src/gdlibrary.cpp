@@ -1,5 +1,4 @@
 #include "triangle.h"
-#include "grid.h"
 #include "block.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
@@ -12,8 +11,7 @@ extern "C" void GDN_EXPORT godot_gdnative_terminate(godot_gdnative_terminate_opt
 
 extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
     godot::Godot::nativescript_init(handle);
-    
+
     godot::register_class<godot::Triangle>();
-    godot::register_class<godot::Grid>();
     godot::register_class<godot::Block>();
 }
