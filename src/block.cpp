@@ -8,6 +8,7 @@
  */
 
 #include "block.h"
+#include "triangle.h"
 
 using namespace godot;
 
@@ -22,10 +23,23 @@ Block::Block() {}
 Block::~Block() {}
 
 void Block::_init() {
+    for (int i = 0; i < 4; i++) {
+        triangles[i] = Triangle();
+        triangles[i].t_data = i;
+    }
+    
 }
 
 void Block::_process(float delta) {
 
 }
 
-String Block::b_method() { return "b_method_data"; }
+String Block::b_method() {
+    int result = 0;
+    for (int i = 0; i < 4; i++) {
+        result+=triangles[i].t_method();
+    }
+    
+    return result;
+    
+}

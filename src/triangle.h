@@ -7,8 +7,8 @@
 namespace godot {
     class Triangle : public TextureButton {
         GODOT_CLASS(Triangle, TextureButton)
-
         public:
+            int t_data=0;
             static void _register_methods();
 
             Triangle();
@@ -18,7 +18,7 @@ namespace godot {
 
             void _process(float delta);
 
-            String t_method();
+            int t_method();
     };
 }
 #endif

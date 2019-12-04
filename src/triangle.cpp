@@ -17,4 +17,4 @@ void Triangle::_init() {}
 void Triangle::_process(float delta) {
 }
 
-String Triangle::t_method() { return "t_method_data1"; }
+int Triangle::t_method() { return t_data; }
