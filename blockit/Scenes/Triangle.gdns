@@ -6,3 +6,4 @@
 resource_name = "Triangle"
 class_name = "Triangle"
 library = ExtResource( 1 )
+

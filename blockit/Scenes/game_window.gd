@@ -8,6 +8,8 @@ extends Node2D
 func _ready():
 	print($Triangle.t_method())
 	print($Block.b_method())
+	print($Grid.set_grid_size(10))
+	print($Grid.get_grid_size())
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

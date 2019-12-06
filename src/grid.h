@@ -26,7 +26,7 @@ namespace godot {
             const static int max_grid_size = 20;
             int grid_size;
             // REVIEW: when does this allocate memory of grid_size and with what value
-            Block** blocks = new Block*[grid_size];
+            // Block** blocks = new Block*[grid_size];
         public:
             static void _register_methods();
 

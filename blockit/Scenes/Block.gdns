@@ -6,3 +6,4 @@
 resource_name = "Block"
 class_name = "Block"
 library = ExtResource( 1 )
+
