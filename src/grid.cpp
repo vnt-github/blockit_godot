@@ -1,4 +1,6 @@
+// TODO: difference between #define "block.h" and #defind<block.h>
 #include "grid.h"
+#include "block.h"
 
 using namespace godot;
 
@@ -16,6 +18,7 @@ void Grid::_register_methods() {
     register_method("_init", &Grid::_init);
     register_method("set_grid_size", &Grid::set_grid_size);
     register_method("get_grid_size", &Grid::get_grid_size);
+    register_method("get_block", &Grid::get_block);
 }
 
 // TODO: where to initialize and set value of grid_size
@@ -31,6 +34,16 @@ Grid::~Grid() {
  * initialized the grid with appropriate number of blocks
  */
 void Grid::_init() {
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 20; j++) {
+            blocks[i][j] = Block();
+            blocks[i][j]._init();
+        }
+    }
+}
+
+String Grid::get_block(int i, int j) {
+    return "_" + blocks[i][j].get_triangle(0) + "_";
 }
 
 void Grid::_process(float delta) {

@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/game_window.gd" type="Script" id=1]
 [ext_resource path="res://art/bg1.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/Triangle.gdns" type="Script" id=3]
-[ext_resource path="res://Scenes/Block.gdns" type="Script" id=4]
-[ext_resource path="res://Scenes/Grid.gdns" type="Script" id=5]
+[ext_resource path="res://Scenes/Grid.gdns" type="Script" id=3]
 
 [node name="game_window" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,12 +15,6 @@ margin_bottom = 1024.95
 texture = ExtResource( 2 )
 expand = true
 
-[node name="Triangle" type="Node2D" parent="."]
+[node name="gw_grid_child" type="Node2D" parent="."]
 script = ExtResource( 3 )
-
-[node name="Block" type="Node2D" parent="."]
-script = ExtResource( 4 )
-
-[node name="Grid" type="Node2D" parent="."]
-script = ExtResource( 5 )
 

@@ -16,16 +16,18 @@ void Block::_register_methods() {
     register_method("_process", &Block::_process);
     register_method("_init", &Block::_init);
     register_method("b_method", &Block::b_method);
+    register_method("get_triangle", &Block::get_triangle);
 }
 
-Block::Block() {}
+Block::Block() {
+}
 
 Block::~Block() {}
 
 void Block::_init() {
     for (int i = 0; i < 4; i++) {
         triangles[i] = Triangle();
-        triangles[i].t_data = i;
+        triangles[i]._init();
     }
     
 }
@@ -35,11 +37,14 @@ void Block::_process(float delta) {
 }
 
 String Block::b_method() {
-    int result = 0;
+    String result;
     for (int i = 0; i < 4; i++) {
         result+=triangles[i].t_method();
     }
     
-    return result;
-    
+    return result;    
+}
+
+String Block::get_triangle(int i) {
+    return triangles[i].t_method();
 }

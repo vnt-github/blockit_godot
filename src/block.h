@@ -35,6 +35,7 @@ namespace godot {
             void _init();
             void _process(float delta);
             String b_method();
+            String get_triangle(int);
     };
 }
 #endif

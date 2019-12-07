@@ -8,7 +8,8 @@ namespace godot {
     class Triangle : public TextureButton {
         GODOT_CLASS(Triangle, TextureButton)
         public:
-            int t_data=0;
+            // QUERY: can we initialize it's value here like String t_data=1;
+            String t_data;
             static void _register_methods();
 
             Triangle();
@@ -18,7 +19,7 @@ namespace godot {
 
             void _process(float delta);
 
-            int t_method();
+            String t_method();
     };
 }
 #endif

@@ -13,9 +13,11 @@ Triangle::Triangle() {}
 
 Triangle::~Triangle() {}
 
-void Triangle::_init() {}
+void Triangle::_init() {
+    t_data = "1";
+}
 
 void Triangle::_process(float delta) {
 }
 
-int Triangle::t_method() { return t_data; }
+String Triangle::t_method() { return "^"+ t_data + "^"; }

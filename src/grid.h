@@ -27,8 +27,11 @@ namespace godot {
             int grid_size;
             // REVIEW: when does this allocate memory of grid_size and with what value
             // Block** blocks = new Block*[grid_size];
+            Block blocks[20][20];
         public:
             static void _register_methods();
+            
+            String get_block(int, int);
 
             Grid();
             ~Grid();
