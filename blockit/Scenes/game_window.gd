@@ -11,7 +11,8 @@ func _ready():
 	# this loads the Grid.gdns as resource and .new() instantiates it and then calls get_block on this instance
 	print(test.get_block(1,2))
 	# this just calls get_block on already instanced child node of game_windows, gw_grid_child
-	print($gw_grid_child.get_block(1,2)) or print(get_node("gw_grid_child").get_block(1, 2));
+	print($gw_grid_child.get_block(1,2))
+	print(get_node("gw_grid_child").get_block(1, 2));
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

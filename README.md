@@ -7,3 +7,5 @@ on ubisoft system make sure to use the nativescript1.1 branch for building
     - [ ] cd blockit_godot then scons platform=windows target=debug
 - [ ] for now target=debug only works
     - [ ] may be beacuse of -MDd in SConstruct CCFLAGS
+- [ ] research the godot-demo's multiplayer ping
+- [ ] research heartstone's architecture
