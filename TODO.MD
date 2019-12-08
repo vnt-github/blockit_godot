@@ -4,3 +4,7 @@
     - [ ] smaller block seperating borders
 - [ ] make sure to add comments everywher for easier future understanding
 - [ ] hearthstone server and online setup
+- [ ] finish candy crush godot tutorial
+- [ ] finish ntw cpp gdnative tutorial
+- [ ] figure out nested packed scene how to do
+- [ ] setup gdnative cpp debugger for unix socket error

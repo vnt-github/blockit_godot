@@ -22,17 +22,17 @@ void Game::_ready() {
 }
 
 void Game::init(int x, int y) {
-    godot::Grid* grid = static_cast<godot::Grid*>(GridScene->instance());
-    int rows=1;
-    int columns=1;
-    grid->init(rows, columns);
-    add_child(grid);
-    grid->set_position(Vector2(x, y));
-    // TODO: call grid.init here
+    // godot::Grid* grid = static_cast<godot::Grid*>(GridScene->instance());
+    // int rows=1;
+    // int columns=1;
+    // grid->init(rows, columns);
+    // add_child(grid);
+    // grid->set_position(Vector2(x, y));
+    // // TODO: call grid.init here
 
-    godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
-    add_child(block);
-    block->set_position(Vector2(x, y));
+    // godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+    // add_child(block);
+    // block->set_position(Vector2(x, y));
 
 }
 

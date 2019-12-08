@@ -35,8 +35,7 @@ namespace godot {
             void _init();
             void _ready();
             void _process(float delta);
-        private:
-            Ref<PackedScene> TriangleScene;
+            String block_types[2];
     };
 }
 #endif
