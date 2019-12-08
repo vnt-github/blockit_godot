@@ -26,7 +26,7 @@ Block::~Block() {}
 
 // TODO: what will be best x_pos, y_pos to represent left upper corner, centre etc.
 void Block::init(int x_pos, int y_pos) {
-    // set_position(Vector2(x_pos, y_pos));
+    set_position(Vector2(x_pos, y_pos));
 }
 
 void Block::_init() {

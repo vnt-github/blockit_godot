@@ -16,10 +16,9 @@ using namespace godot;
 
 
 void Grid::_register_methods() {
-    register_method("_process", &Grid::_process);
-    register_method("_init", &Grid::_init);
-    register_method("_ready", &Grid::_ready);
-    register_method("init", &Grid::init);
+    register_method("_init", &Grid::_init, GODOT_METHOD_RPC_MODE_DISABLED);
+    register_method("_ready", &Grid::_ready, GODOT_METHOD_RPC_MODE_DISABLED);
+    register_method("init", &Grid::init, GODOT_METHOD_RPC_MODE_DISABLED);
 
 }
 
@@ -44,18 +43,13 @@ void Grid::_ready() {
 }
 
 void Grid::init(int rows, int columns) {
-    // godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
-    // add_child(block);
-    // for (int i = 0; i < rows; i++) {
-    //     for (int j = 0; j < columns; j++) {
-            // godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
-            // add_child(block);
-            // int margin = 10;
-            // block->init(1*margin, 1*margin);
-    //     }
-    // }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+            add_child(block);
+            int margin = 100;
+            block->init(i*margin, j*margin);
+        }
+    }
 }
 
-void Grid::_process(float delta) {
-
-}
