@@ -10,6 +10,8 @@
 
 #include <Godot.hpp>
 #include <Node2D.hpp>
+#include <Ref.hpp>
+#include <PackedScene.hpp>
 
 namespace godot {
     /** TODO: build this
@@ -33,6 +35,8 @@ namespace godot {
             void _init();
             void _ready();
             void _process(float delta);
+        private:
+            Ref<PackedScene> TriangleScene;
     };
 }
 #endif

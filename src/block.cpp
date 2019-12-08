@@ -8,6 +8,9 @@
  */
 
 #include "block.h"
+#include "triangle.h"
+#include <SceneTree.hpp>
+#include <ResourceLoader.hpp>
 
 using namespace godot;
 
@@ -23,14 +26,20 @@ Block::Block() {
 
 Block::~Block() {}
 
+void Block::_init() {
+    ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
+    TriangleScene = resourceLoader->load("res://triangle/Triangle.tscn");
+}
 
 // TODO: what will be best x_pos, y_pos to represent left upper corner, centre etc.
 void Block::init(int x_pos, int y_pos) {
     set_position(Vector2(x_pos, y_pos));
+    // TODO: Error: ERROR: _get_socket_error: Socket error: 10054
+    //       At: drivers/unix/net_socket_posix.cpp:190
+    // godot::Triangle* triangle1 = static_cast<godot::Triangle*>(TriangleScene->instance());
+    // add_child(triangle1);
 }
 
-void Block::_init() {
-}
 
 void Block::_ready() {
 

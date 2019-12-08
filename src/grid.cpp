@@ -46,9 +46,9 @@ void Grid::init(int rows, int columns) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
-            add_child(block);
-            int margin = 100;
+            int margin = 150;
             block->init(i*margin, j*margin);
+            add_child(block);
         }
     }
 }

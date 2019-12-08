@@ -16,8 +16,14 @@ func _ready():
 	# print($gw_grid_child.get_block(1,2))
 	# print(get_node("gw_grid_child").get_block(1, 2));
 	var grid = gridScene.instance()
-	grid.init(5, 10)
 	add_child(grid)
+	grid.init(2, 2)
+	yield(get_tree().create_timer(2.0), "timeout")
+	remove_child(grid)
+	grid.queue_free()
+	var grid2 = gridScene.instance()
+	grid2.init(3,4)
+	add_child(grid2)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
