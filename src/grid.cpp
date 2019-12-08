@@ -1,6 +1,8 @@
 // TODO: difference between #define "block.h" and #defind<block.h>
 #include "grid.h"
 #include "block.h"
+#include <ResourceLoader.hpp>
+#include <SceneTree.hpp>
 
 using namespace godot;
 
@@ -16,9 +18,9 @@ using namespace godot;
 void Grid::_register_methods() {
     register_method("_process", &Grid::_process);
     register_method("_init", &Grid::_init);
-    register_method("set_grid_size", &Grid::set_grid_size);
-    register_method("get_grid_size", &Grid::get_grid_size);
-    register_method("get_block", &Grid::get_block);
+    register_method("_ready", &Grid::_ready);
+    register_method("init", &Grid::init);
+
 }
 
 // TODO: where to initialize and set value of grid_size
@@ -34,39 +36,26 @@ Grid::~Grid() {
  * initialized the grid with appropriate number of blocks
  */
 void Grid::_init() {
-    for (int i = 0; i < 20; i++) {
-        for (int j = 0; j < 20; j++) {
-            blocks[i][j] = Block();
-            blocks[i][j]._init();
-        }
-    }
+    ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
+    BlockScene = resourceLoader->load("res://block/Block.tscn");
 }
 
-String Grid::get_block(int i, int j) {
-    return "_" + blocks[i][j].get_triangle(0) + "_";
+void Grid::_ready() {
+}
+
+void Grid::init(int rows, int columns) {
+    // godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+    // add_child(block);
+    // for (int i = 0; i < rows; i++) {
+    //     for (int j = 0; j < columns; j++) {
+            // godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+            // add_child(block);
+            // int margin = 10;
+            // block->init(1*margin, 1*margin);
+    //     }
+    // }
 }
 
 void Grid::_process(float delta) {
 
 }
-
-/**
- * checks validity for grid size and sets it to new value
- * 
- * @param[in] new_grid_size the new_grid_size
- */
-bool Grid::set_grid_size(int new_grid_size) {
-    if (new_grid_size < 0 || new_grid_size > 20) return false;
-    grid_size = new_grid_size;
-    return true;
-}
-
-/**
- * returns grid_size.
- *
- * @return grid_size int
- */
-int Grid::get_grid_size() {
-    return grid_size;
-}
-

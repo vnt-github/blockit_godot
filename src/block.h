@@ -10,7 +10,6 @@
 
 #include <Godot.hpp>
 #include <Node2D.hpp>
-#include <triangle.h>
 
 namespace godot {
     /** TODO: build this
@@ -24,18 +23,16 @@ namespace godot {
     class Block : public Node2D {
         GODOT_CLASS(Block, Node2D);
         // TODO: define dynamic array of Blocks
-        private:
-            Triangle triangles[4];
         public:
             static void _register_methods();
 
             Block();
             ~Block();
 
+            void init(int, int);
             void _init();
+            void _ready();
             void _process(float delta);
-            String b_method();
-            String get_triangle(int);
     };
 }
 #endif
