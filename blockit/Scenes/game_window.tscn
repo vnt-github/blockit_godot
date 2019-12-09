@@ -17,4 +17,3 @@ expand = true
 
 [node name="gw_grid_child" type="Node2D" parent="."]
 script = ExtResource( 3 )
-

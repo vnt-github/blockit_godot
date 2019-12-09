@@ -28,6 +28,8 @@ namespace godot {
             void _init();
             void _ready();
             void init(int, int);
+            void _process();
+            void touch_input();
         // TODO: define dynamic array of Blocks
         private:
             // REVIEW: may be make it const. determine effect on all scenerios.
@@ -35,7 +37,6 @@ namespace godot {
             // REVIEW: when does this allocate memory of grid_size and with what value
             // Block** blocks = new Block*[grid_size];
             Ref<PackedScene> BlockScene;
-
-
+            Ref<PackedScene> TriangleScene;
     };
 }

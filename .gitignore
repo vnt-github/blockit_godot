@@ -18,3 +18,4 @@ logs
 Thumbs.db
 godot/-cpp
 *.ilk
+*.sqlite
