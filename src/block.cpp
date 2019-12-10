@@ -13,6 +13,7 @@
 #include <ResourceLoader.hpp>
 #include <Sprite.hpp>
 #include <Texture.hpp>
+#include <TextureButton.hpp>
 
 using namespace godot;
 
@@ -37,9 +38,7 @@ void Block::init(int x_pos, int y_pos) {
     ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
     set_position(Vector2(x_pos, y_pos));
     Sprite* block = static_cast<Sprite*>(get_node("Sprite"));
-    Node2D* TriangleLeftNode = static_cast<Node2D*>(get_node("TriangleLeft"));
-    Sprite* TriangleLeft = static_cast<Sprite*>(TriangleLeftNode->get_node("Sprite"));
-    block->set_scale(Vector2(0.2, 0.2));
+    TextureButton* TriangleLeftNode = static_cast<TextureButton*>(get_node("TriangleLeft"));
     int max = 2;
     int min = 0;
     int range = max - min + 1;
@@ -58,7 +57,8 @@ void Block::init(int x_pos, int y_pos) {
 
     Godot::print(block_texture_path);
     block->set_texture(resourceLoader->load(block_texture_path));
-    TriangleLeft->set_texture(resourceLoader->load(String("res://art/white_triangle.png")));
+    TriangleLeftNode->set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
+    TriangleLeftNode->set_hover_texture(resourceLoader->load("res://art/black_triangle.png"));
     // TODO: Error: ERROR: _get_socket_error: Socket error: 10054
     //       At: drivers/unix/net_socket_posix.cpp:190
     // godot::Triangle* triangle1 = static_cast<godot::Triangle*>(TriangleScene->instance());

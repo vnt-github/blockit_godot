@@ -13,17 +13,28 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="TriangleLeft" parent="." instance=ExtResource( 3 )]
-position = Vector2( 51.1723, 14.5516 )
-rotation = 1.5708
+margin_left = 47.7331
+margin_top = 14.6326
+margin_right = 427.733
+margin_bottom = 204.633
+rect_rotation = 90.0
 
 [node name="TriangleRight" parent="." instance=ExtResource( 3 )]
-position = Vector2( 58.3452, 92.3793 )
-rotation = 4.70197
+margin_left = 61.4295
+margin_top = 90.6113
+margin_right = 441.429
+margin_bottom = 280.611
+rect_rotation = -90.0
 
 [node name="TriangleDown" parent="." instance=ExtResource( 3 )]
-position = Vector2( 15.5516, 54.9654 )
+margin_left = 15.4784
+margin_top = 56.8596
+margin_right = 395.478
+margin_bottom = 246.86
 
 [node name="TriangleUp" parent="." instance=ExtResource( 3 )]
-position = Vector2( 92.8277, 52.5862 )
-rotation = 3.14159
-
+margin_left = 91.9314
+margin_top = 48.8026
+margin_right = 471.931
+margin_bottom = 238.803
+rect_rotation = 180.0
