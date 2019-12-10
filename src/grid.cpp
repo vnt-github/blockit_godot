@@ -66,7 +66,7 @@ void Grid::touch_input() {
         godot::Triangle* triangle = static_cast<godot::Triangle*>(TriangleScene->instance());
         triangle->init(first_touch);
         add_child(triangle);
-        // TODO: why above does not work but below works?
+        // TODO: why above does not work?
             // - [x] unmatched type of the node and the attached gdnative scripts class(was of type Node2d in godot and in cpp its was TextureButton)
 
     }

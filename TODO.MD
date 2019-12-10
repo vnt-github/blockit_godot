@@ -7,4 +7,8 @@
 - [ ] finish candy crush godot tutorial
 - [ ] finish ntw cpp gdnative tutorial
 - [ ] figure out nested packed scene how to do
+- [ ] triangle texture button bit mask
+- [ ] blocks dynamic triangles array and spawn
+    - [ ] mostly error caused due to mismatch of class inheritence etc.
 - [ ] setup gdnative cpp debugger for unix socket error
+    - [ ] try setting up mvs debugger thread like in c++ maze tutorial series.
