@@ -6,6 +6,7 @@ void Triangle::_register_methods() {
     // NOTE: this is mandatory for godot to know what to _process()
     register_method("_process", &Triangle::_process);
     register_method("_init", &Triangle::_init);
+    register_method("_ready", &Triangle::_ready);
 }
 
 Triangle::Triangle() {}
@@ -13,6 +14,9 @@ Triangle::Triangle() {}
 Triangle::~Triangle() {}
 
 void Triangle::_init() {
+}
+void Triangle::_ready() {
+    Godot::print(get_position());
 }
 
 void Triangle::init(Vector2 pos) {

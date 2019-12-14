@@ -2,7 +2,6 @@
 #define TRIANGLE_H
 
 #include <Godot.hpp>
-#include <Node2D.hpp>
 #include <TextureButton.hpp>
 #include <Vector2.hpp>
 
@@ -18,6 +17,7 @@ namespace godot {
             
             void init(Vector2);
             void _init();
+            void _ready();
 
             void _process(float delta);
     };
