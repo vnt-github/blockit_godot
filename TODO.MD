@@ -7,7 +7,8 @@
 - [ ] finish candy crush godot tutorial
 - [ ] finish ntw cpp gdnative tutorial
 - [ ] figure out nested packed scene how to do
-- [ ] triangle texture button bit mask
+- [x] triangle texture button bit mask
+    - [a] https://godotengine.org/qa/26137/texturebutton-wont-allow-png-mask: select the triangle.png click the import tab and import as bitmap and use the alpha and threshold(for 1 and 0 bit i guess) anything < 1
 - [ ] blocks dynamic triangles array and spawn
     - [ ] mostly error caused due to mismatch of class inheritence etc.
 - [ ] setup gdnative cpp debugger for unix socket error

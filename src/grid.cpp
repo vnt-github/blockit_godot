@@ -51,7 +51,7 @@ void Grid::init(int rows, int columns) {
         for (int j = 0; j < columns; j++) {
             godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
             int margin = 150;
-            block->init(i*margin, j*margin);
+            block->init(Vector2(i*margin, j*margin));
             add_child(block);
         }
     }
@@ -64,7 +64,7 @@ void Grid::touch_input() {
         Godot::print(first_touch);
 
         godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
-        block->init(first_touch.x, first_touch.y);
+        block->init(first_touch);
         add_child(block);
 
 

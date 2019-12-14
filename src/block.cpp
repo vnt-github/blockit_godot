@@ -34,9 +34,9 @@ void Block::_init() {
 }
 
 // TODO: what will be best x_pos, y_pos to represent left upper corner, centre etc.
-void Block::init(int x_pos, int y_pos) {
+void Block::init(Vector2 pos) {
     ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
-    set_position(Vector2(x_pos, y_pos));
+    set_position(pos);
     Sprite* block = static_cast<Sprite*>(get_node("Sprite"));
     TextureButton* TriangleLeftNode = static_cast<TextureButton*>(get_node("TriangleLeft"));
     int max = 2;

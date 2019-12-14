@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/black_triangle_mask.png-78c8f6d779eb80220a888a0517d19be0.res"
+
+[deps]
+
+source_file="res://art/black_triangle_mask.png"
+dest_files=[ "res://.import/black_triangle_mask.png-78c8f6d779eb80220a888a0517d19be0.res" ]
+
+[params]
+
+create_from=1
+threshold=0.99

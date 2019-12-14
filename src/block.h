@@ -31,11 +31,13 @@ namespace godot {
             Block();
             ~Block();
 
-            void init(int, int);
+            void init(Vector2);
             void _init();
             void _ready();
             void _process(float delta);
             String block_types[2];
+	private:
+		Ref<PackedScene> BlockTriangleScene;
     };
 }
 #endif

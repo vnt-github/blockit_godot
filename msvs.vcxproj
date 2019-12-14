@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\block.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\gdlibrary.cpp" />
+    <ClCompile Include="src\grid.cpp" />
+    <ClCompile Include="src\triangle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\block.h" />
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\grid.h" />
+    <ClInclude Include="src\triangle.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{7FCC83A2-1D45-4BB3-8C4D-CC5B3178B4F9}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! -j1</NMakeBuildCommandLine>
+    <NMakeOutput>C:\godot\bin\godot.windows.tools.64.exe --path C:/GAME_PROJECTS/blockit/blockit_godot/blockit</NMakeOutput>
+    <NMakeCleanCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! vsproj=yes -j1</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" --clean platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! -j1</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>DEBUG_MEMORY_ALLOC;DISABLE_FORCED_INLINE;DEBUG_ENABLED;DEBUG_MEMORY_ENABLED;D3D_DEBUG_INFO;WINDOWS_ENABLED;OPENGL_ENABLED;WASAPI_ENABLED;WINMIDI_ENABLED;TYPED_METHOD_BIND;WIN32;MSVC;WINVER=0x0601;_WIN32_WINNT=0x0601;NOMINMAX;_WIN64;PTRCALL_ENABLED;TOOLS_ENABLED;GDSCRIPT_ENABLED;MINIZIP_ENABLED</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>C:\godot\editor;C:\godot;C:\godot\platform\windows;C:\Program Files (x86)\Windows Kits\10\Include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\ATLMFC\include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\cppwinrt;C:\godot\thirdparty\zlib;C:\godot\thirdparty\zstd;C:\godot\thirdparty\glad;C:\godot\thirdparty\libpng;C:\godot\thirdparty\freetype\include;C:\godot\thirdparty\nanosvg</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeAssemblySearchPath>$(NMakeAssemblySearchPath)</NMakeAssemblySearchPath>
+    <NMakeForcedUsingAssemblies>$(NMakeForcedUsingAssemblies)</NMakeForcedUsingAssemblies>
+    <IncludePath>C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\godot_headers;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include\gen;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include\core;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\bin;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NMakeBuildCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! -j1</NMakeBuildCommandLine>
+    <NMakeOutput>C:\godot\bin\godot.windows.tools.64.exe</NMakeOutput>
+    <NMakeCleanCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! vsproj=yes -j1</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" --clean platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! -j1</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>DEBUG_MEMORY_ALLOC;DISABLE_FORCED_INLINE;DEBUG_ENABLED;DEBUG_MEMORY_ENABLED;D3D_DEBUG_INFO;WINDOWS_ENABLED;OPENGL_ENABLED;WASAPI_ENABLED;WINMIDI_ENABLED;TYPED_METHOD_BIND;WIN32;MSVC;WINVER=0x0601;_WIN32_WINNT=0x0601;NOMINMAX;_WIN64;PTRCALL_ENABLED;TOOLS_ENABLED;GDSCRIPT_ENABLED;MINIZIP_ENABLED</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>C:\godot\editor;C:\godot;C:\godot\platform\windows;C:\Program Files (x86)\Windows Kits\10\Include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\ATLMFC\include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\cppwinrt;C:\godot\thirdparty\zlib;C:\godot\thirdparty\zstd;C:\godot\thirdparty\glad;C:\godot\thirdparty\libpng;C:\godot\thirdparty\freetype\include;C:\godot\thirdparty\nanosvg</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeAssemblySearchPath>$(NMakeAssemblySearchPath)</NMakeAssemblySearchPath>
+    <NMakeForcedUsingAssemblies>$(NMakeForcedUsingAssemblies)</NMakeForcedUsingAssemblies>
+    <IncludePath>C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\godot_headers;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include\gen;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include\core;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\bin;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! -j1</NMakeBuildCommandLine>
+    <NMakeOutput>C:\godot\bin\godot.windows.tools.64.exe --path C:/GAME_PROJECTS/blockit/blockit_godot/blockit</NMakeOutput>
+    <NMakeCleanCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! vsproj=yes -j1</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" --clean platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! -j1</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>DEBUG_MEMORY_ALLOC;DISABLE_FORCED_INLINE;DEBUG_ENABLED;DEBUG_MEMORY_ENABLED;D3D_DEBUG_INFO;WINDOWS_ENABLED;OPENGL_ENABLED;WASAPI_ENABLED;WINMIDI_ENABLED;TYPED_METHOD_BIND;WIN32;MSVC;WINVER=0x0601;_WIN32_WINNT=0x0601;NOMINMAX;_WIN64;PTRCALL_ENABLED;TOOLS_ENABLED;GDSCRIPT_ENABLED;MINIZIP_ENABLED</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>C:\godot\editor;C:\godot;C:\godot\platform\windows;C:\Program Files (x86)\Windows Kits\10\Include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\ATLMFC\include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\cppwinrt;C:\godot\thirdparty\zlib;C:\godot\thirdparty\zstd;C:\godot\thirdparty\glad;C:\godot\thirdparty\libpng;C:\godot\thirdparty\freetype\include;C:\godot\thirdparty\nanosvg</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeAssemblySearchPath>$(NMakeAssemblySearchPath)</NMakeAssemblySearchPath>
+    <NMakeForcedUsingAssemblies>$(NMakeForcedUsingAssemblies)</NMakeForcedUsingAssemblies>
+    <IncludePath>C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\godot_headers;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include\gen;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include\core;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\bin;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NMakeBuildCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! -j1</NMakeBuildCommandLine>
+    <NMakeOutput>C:\godot\bin\godot.windows.tools.64.exe --path C:/GAME_PROJECTS/blockit/blockit_godot/blockit</NMakeOutput>
+    <NMakeCleanCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! vsproj=yes -j1</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>echo Starting SCons &amp;&amp; cmd /V /C set "plat=$(PlatformTarget)" ^&amp; (if "$(PlatformTarget)"=="x64" (set "plat=x86_amd64")) ^&amp; set "tools=yes" ^&amp; (if "$(Configuration)"=="release" (set "tools=no")) ^&amp; call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" !plat! ^&amp; scons --directory="$(ProjectDir.TrimEnd(%27\%27))" --clean platform=windows progress=no target=$(Configuration.toLower()) tools=!tools! -j1</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>DEBUG_MEMORY_ALLOC;DISABLE_FORCED_INLINE;DEBUG_ENABLED;DEBUG_MEMORY_ENABLED;D3D_DEBUG_INFO;WINDOWS_ENABLED;OPENGL_ENABLED;WASAPI_ENABLED;WINMIDI_ENABLED;TYPED_METHOD_BIND;WIN32;MSVC;WINVER=0x0601;_WIN32_WINNT=0x0601;NOMINMAX;_WIN64;PTRCALL_ENABLED;TOOLS_ENABLED;GDSCRIPT_ENABLED;MINIZIP_ENABLED</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>C:\godot\editor;C:\godot;C:\godot\platform\windows;C:\Program Files (x86)\Windows Kits\10\Include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\ATLMFC\include;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\cppwinrt;C:\godot\thirdparty\zlib;C:\godot\thirdparty\zstd;C:\godot\thirdparty\glad;C:\godot\thirdparty\libpng;C:\godot\thirdparty\freetype\include;C:\godot\thirdparty\nanosvg</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeAssemblySearchPath>$(NMakeAssemblySearchPath)</NMakeAssemblySearchPath>
+    <NMakeForcedUsingAssemblies>$(NMakeForcedUsingAssemblies)</NMakeForcedUsingAssemblies>
+    <IncludePath>C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\godot_headers;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include\gen;C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\include\core;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\GAME_PROJECTS\blockit\blockit_godot\godot-cpp\bin;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
