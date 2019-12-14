@@ -4,6 +4,7 @@
 #include <Godot.hpp>
 #include <TextureButton.hpp>
 #include <Vector2.hpp>
+#include "Game.h"
 
 namespace godot {
     // TODO: change it to Node2d and try debugging to find the error
@@ -20,6 +21,9 @@ namespace godot {
             void _ready();
 
             void _process(float delta);
+			void _on_pressed();
+	private:
+		owners is_occupied_by;
     };
 }
 #endif

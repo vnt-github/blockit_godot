@@ -13,3 +13,19 @@
     - [ ] mostly error caused due to mismatch of class inheritence etc.
 - [ ] setup gdnative cpp debugger for unix socket error
     - [ ] try setting up mvs debugger thread like in c++ maze tutorial series.
+
+
+- [ ] triangle button not disabled
+    - [1] get parent block [black|white]
+    - [2] get turn [black|white]
+        - [ ] if 1 == 2 
+
+- [ ] triangle placed handling
+    - [ ] black or white
+    - [ ] triangle state record
+        - [ ] is_occupied_by: [none|black|white]
+            - [ ] if !is_occupied_by disable: false
+            - [ ] else: disabled: true
+        - [ ] on succesfull state update emit randomize grid blocks
+
+- [ ] equi distribute blocks

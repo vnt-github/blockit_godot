@@ -16,3 +16,4 @@ texture_hover = ExtResource( 2 )
 texture_click_mask = ExtResource( 3 )
 script = ExtResource( 4 )
 
+[connection signal="pressed" from="." to="." method="_on_pressed"]

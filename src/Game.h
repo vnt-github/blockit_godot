@@ -5,6 +5,8 @@
 #include <Ref.hpp>
 #include <PackedScene.hpp>
 
+enum owners { none, black, white };
+
 namespace godot {
     class Game: public Node {
         GODOT_CLASS(Game, Node);
