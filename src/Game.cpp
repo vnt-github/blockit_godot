@@ -16,17 +16,25 @@ void Game::_init() {
     ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
     GridScene = resourceLoader->load("res://grid/Grid.tscn");
     BlockScene = resourceLoader->load("res://block/Block.tscn");
+	PoolStringArray states;
+	states.append("first_turn");
+	states.append("black_turn");
+	states.append("white_turn");
+	states.append("black_override");
+	states.append("white_override");
+	_init_states(states);
 }
 
 void Game::_ready() {
 }
 
 void Game::init(int x, int y) {
-    // godot::Grid* grid = static_cast<godot::Grid*>(GridScene->instance());
-    // int rows=1;
-    // int columns=1;
-    // grid->init(rows, columns);
-    // add_child(grid);
+	print_states();
+     godot::Grid* grid = static_cast<godot::Grid*>(GridScene->instance());
+     int rows=2;
+     int columns=2;
+     add_child(grid);
+     grid->init(rows, columns);
     // grid->set_position(Vector2(x, y));
     // // TODO: call grid.init here
 

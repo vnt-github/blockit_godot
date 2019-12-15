@@ -23,6 +23,10 @@ void Grid::_register_methods() {
     register_method("init", &Grid::init, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("_process", &Grid::_process, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("touch_input", &Grid::touch_input, GODOT_METHOD_RPC_MODE_DISABLED);
+
+	//TODO: fix below it's not exporting it to godot
+	register_property<Grid, Vector2>("grid_margins", &Grid::grid_margins, Vector2());
+
 }
 
 // TODO: where to initialize and set value of grid_size
@@ -41,17 +45,26 @@ void Grid::_init() {
     ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
     BlockScene = resourceLoader->load("res://block/Block.tscn");
     TriangleScene = resourceLoader->load("res://triangle/Triangle.tscn");
+	PoolStringArray states;
+	states.append("first_turn");
+	states.append("black_turn");
+	states.append("white_turn");
+	states.append("black_override");
+	states.append("white_override");
+	_init_states(states);
+	grid_margins = Vector2(30, 200);
 }
 
 void Grid::_ready() {
 }
 
 void Grid::init(int rows, int columns) {
+	print_states();
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
             int margin = 150;
-            block->init(Vector2(i*margin, j*margin));
+            block->init(grid_margins + Vector2(i*margin, j*margin));
             add_child(block);
         }
     }

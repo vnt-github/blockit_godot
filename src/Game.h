@@ -4,12 +4,13 @@
 #include <Node.hpp>
 #include <Ref.hpp>
 #include <PackedScene.hpp>
+#include "StateMachine.h"
 
 enum owners { none, black, white };
 
 namespace godot {
-    class Game: public Node {
-        GODOT_CLASS(Game, Node);
+    class Game: public StateMachine {
+        GODOT_CLASS(Game, Node2D);
         public:
             static void _register_methods();
 

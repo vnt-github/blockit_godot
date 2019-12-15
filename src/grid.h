@@ -4,6 +4,7 @@
 #include <Node2D.hpp>
 #include <Ref.hpp>
 #include <PackedScene.hpp>
+#include "StateMachine.h"
 
 namespace godot {
     /** TODO: build this
@@ -17,7 +18,7 @@ namespace godot {
      * also contains logic for randomization and determining
      * blocked and hence turn based on override. 
      */
-    class Grid : public Node2D {
+    class Grid : public StateMachine {
         GODOT_CLASS(Grid, Node2D);
         public:
             static void _register_methods();
@@ -38,5 +39,6 @@ namespace godot {
             // Block** blocks = new Block*[grid_size];
             Ref<PackedScene> BlockScene;
             Ref<PackedScene> TriangleScene;
+			Vector2 grid_margins;
     };
 }

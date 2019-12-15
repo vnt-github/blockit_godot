@@ -10,7 +10,6 @@ margin_left = -0.262238
 margin_top = 0.262234
 margin_right = 379.738
 margin_bottom = 190.262
-rect_scale = Vector2( 0.2, 0.2 )
 texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 2 )
 texture_click_mask = ExtResource( 3 )

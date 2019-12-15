@@ -23,12 +23,14 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\gdlibrary.cpp" />
     <ClCompile Include="src\grid.cpp" />
+    <ClCompile Include="src\StateMachine.cpp" />
     <ClCompile Include="src\triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\block.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\grid.h" />
+    <ClInclude Include="src\StateMachine.h" />
     <ClInclude Include="src\triangle.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
