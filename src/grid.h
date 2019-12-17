@@ -4,7 +4,6 @@
 #include <Node2D.hpp>
 #include <Ref.hpp>
 #include <PackedScene.hpp>
-#include "StateMachine.h"
 
 namespace godot {
     /** TODO: build this
@@ -18,7 +17,7 @@ namespace godot {
      * also contains logic for randomization and determining
      * blocked and hence turn based on override. 
      */
-    class Grid : public StateMachine {
+    class Grid : public Node2D {
         GODOT_CLASS(Grid, Node2D);
         public:
             static void _register_methods();
@@ -31,6 +30,8 @@ namespace godot {
             void init(int, int);
             void _process();
             void touch_input();
+			int _rows = 1;
+			int _columns = 1;
         // TODO: define dynamic array of Blocks
         private:
             // REVIEW: may be make it const. determine effect on all scenerios.
@@ -40,5 +41,6 @@ namespace godot {
             Ref<PackedScene> BlockScene;
             Ref<PackedScene> TriangleScene;
 			Vector2 grid_margins;
+            // TODO: 2d array of blocks init on _init or init and spawned (add_child) on_ready
     };
 }

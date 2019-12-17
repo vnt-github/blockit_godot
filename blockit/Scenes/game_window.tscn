@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/game_window.gd" type="Script" id=1]
 [ext_resource path="res://art/bg1.jpg" type="Texture" id=2]
-[ext_resource path="res://grid/Grid.gdns" type="Script" id=3]
 
 [node name="game_window" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,8 +13,3 @@ margin_right = 512.95
 margin_bottom = 1024.95
 texture = ExtResource( 2 )
 expand = true
-
-[node name="gw_grid_child" type="Node2D" parent="."]
-script = ExtResource( 3 )
-grid_margins = null
-

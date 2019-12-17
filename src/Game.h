@@ -5,6 +5,7 @@
 #include <Ref.hpp>
 #include <PackedScene.hpp>
 #include "StateMachine.h"
+#include "grid.h"
 
 enum owners { none, black, white };
 
@@ -17,11 +18,12 @@ namespace godot {
             Game();
             ~Game();
 
-            void init(int, int);
+            void init();
             void _init();
             void _ready();
         private:
             Ref<PackedScene> GridScene;
             Ref<PackedScene> BlockScene;
+            Grid* grid;
     };
 }

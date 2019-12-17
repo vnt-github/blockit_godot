@@ -113,5 +113,11 @@
         "**/*.min.*",
         "**/*.map",
         "**/.next/**"
-    ]
+    ],
+    "search.exclude": {
+        "**/godot-cpp": true
+    },
+    "files.exclude": {
+        "**/godot-cpp": true
+    }
 }

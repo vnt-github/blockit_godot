@@ -45,29 +45,47 @@ void Grid::_init() {
     ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
     BlockScene = resourceLoader->load("res://block/Block.tscn");
     TriangleScene = resourceLoader->load("res://triangle/Triangle.tscn");
-	PoolStringArray states;
-	states.append("first_turn");
-	states.append("black_turn");
-	states.append("white_turn");
-	states.append("black_override");
-	states.append("white_override");
-	_init_states(states);
 	grid_margins = Vector2(30, 200);
 }
 
 void Grid::_ready() {
+    Godot::print("=================_ready begin===============");
+    Godot::print(String::num(this->_rows));
+	Godot::print(String::num(_rows));
+    Godot::print(String::num(_columns));
+    Godot::print("=================_ready end===============");
+	//TODO: set the _rows and _columns from the Game init
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 4; j++) {
+			godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+			int margin = 150;
+			block->init(grid_margins + Vector2(i*margin, j*margin));
+			add_child(block);
+		}
+	}
 }
 
 void Grid::init(int rows, int columns) {
-	print_states();
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns; j++) {
-            godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
-            int margin = 150;
-            block->init(grid_margins + Vector2(i*margin, j*margin));
-            add_child(block);
-        }
-    }
+    Godot::print("=================init begin===============");
+	Godot::print(String::num(_rows));
+	Godot::print(String::num(_columns));
+    Godot::print(String::num(rows));
+    Godot::print(String::num(columns));
+    Godot::print("=================init set===============");
+    _rows = rows;
+	Godot::print(String::num(_rows));
+	Godot::print(String::num(_columns));
+	Godot::print("=================init end===============");
+
+    _columns = columns;
+    //for (int i = 0; i < rows; i++) {
+    //    for (int j = 0; j < columns; j++) {
+    //        godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+    //        int margin = 150;
+    //        block->init(grid_margins + Vector2(i*margin, j*margin));
+    //        add_child(block);
+    //    }
+    //}
 }
 
 void Grid::touch_input() {
