@@ -51,8 +51,8 @@ void Grid::_init() {
 void Grid::_ready() {
     Godot::print("=================_ready begin===============");
     Godot::print(String::num(this->_rows));
-	Godot::print(String::num(_rows));
-    Godot::print(String::num(_columns));
+	Godot::print(String::num(Grid::_rows));
+    Godot::print(String::num(_rows));
     Godot::print("=================_ready end===============");
 	//TODO: set the _rows and _columns from the Game init
 	for (int i = 0; i < 3; i++) {
@@ -72,20 +72,13 @@ void Grid::init(int rows, int columns) {
     Godot::print(String::num(rows));
     Godot::print(String::num(columns));
     Godot::print("=================init set===============");
+    Grid::_rows = rows;
+    Grid::_columns = columns;
     _rows = rows;
+    _columns = columns;
 	Godot::print(String::num(_rows));
 	Godot::print(String::num(_columns));
 	Godot::print("=================init end===============");
-
-    _columns = columns;
-    //for (int i = 0; i < rows; i++) {
-    //    for (int j = 0; j < columns; j++) {
-    //        godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
-    //        int margin = 150;
-    //        block->init(grid_margins + Vector2(i*margin, j*margin));
-    //        add_child(block);
-    //    }
-    //}
 }
 
 void Grid::touch_input() {
@@ -94,9 +87,9 @@ void Grid::touch_input() {
         Vector2 first_touch = get_global_mouse_position();
         Godot::print(first_touch);
 
-        /*godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+        godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
         block->init(first_touch);
-        add_child(block);*/
+        add_child(block);
 
 
         //godot::Triangle* triangle = static_cast<godot::Triangle*>(TriangleScene->instance());

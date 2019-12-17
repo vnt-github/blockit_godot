@@ -18,12 +18,14 @@ namespace godot {
             Game();
             ~Game();
 
-            void init();
+            void init(int, int);
             void _init();
             void _ready();
         private:
             Ref<PackedScene> GridScene;
             Ref<PackedScene> BlockScene;
             Grid* grid;
+            int grid_rows;
+            int grid_columns;
     };
 }

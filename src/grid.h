@@ -30,8 +30,8 @@ namespace godot {
             void init(int, int);
             void _process();
             void touch_input();
-			int _rows = 1;
-			int _columns = 1;
+			int _rows;
+			int _columns;
         // TODO: define dynamic array of Blocks
         private:
             // REVIEW: may be make it const. determine effect on all scenerios.

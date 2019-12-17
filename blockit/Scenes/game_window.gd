@@ -8,7 +8,7 @@ func _ready():
 	# # this loads the Grid.gdns as resource and .new() instantiates it and then calls get_block on this instance
 	# print(test.get_block(1,2))
 	var game = gameScene.instance()
-	game.init();
+	game.init(10, 10);
 	add_child(game);
 	# game.init(1, 2);
 	# this just calls get_block on already instanced child node of game_windows, gw_grid_child

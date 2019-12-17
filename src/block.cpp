@@ -31,6 +31,7 @@ Block::~Block() {}
 
 void Block::_init() {
     ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
+	BlockTriangleScene = resourceLoader->load("res://triangle/Triangle.tscn");
 }
 
 // TODO: what will be best x_pos, y_pos to represent left upper corner, centre etc.
@@ -55,7 +56,6 @@ void Block::init(Vector2 pos) {
     // String block_texture_path = String("res://art/") + block_types[num] + String("_block.png");
     // block->set_texture(resourceLoader->load("res://art/"+ block_types[num] + "_block.png"));
 
-    Godot::print(block_texture_path);
     block->set_texture(resourceLoader->load(block_texture_path));
     TriangleLeftNode->set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
     TriangleLeftNode->set_hover_texture(resourceLoader->load("res://art/black_triangle.png"));
@@ -67,7 +67,10 @@ void Block::init(Vector2 pos) {
 
 
 void Block::_ready() {
-
+	Triangle* triangle = static_cast<godot::Triangle*>(BlockTriangleScene->instance());
+	// TODO: why below gives error
+    //triangle->init(get_position());
+	add_child(triangle);
 }
 
 void Block::_process(float delta) {

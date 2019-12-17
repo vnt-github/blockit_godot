@@ -21,7 +21,6 @@ void Triangle::_init() {
 	is_occupied_by = none;
 }
 void Triangle::_ready() {
-    Godot::print(get_position());
 }
 
 void Triangle::init(Vector2 pos) {
@@ -44,12 +43,12 @@ void Triangle::_on_pressed() {
 	// safe checks
 	case black:
 		is_occupied_by = black; // get current turn
-		Godot::print("black");
+		// Godot::print("black");
 		texture_path = String("res://art/black_triangle.png");
 		break;
 	case white:
 		is_occupied_by = white; // get current turn
-		Godot::print("white");
+		// Godot::print("white");
 		texture_path = String("res://art/white_triangle.png");
 		break;
 	default:

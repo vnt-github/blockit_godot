@@ -23,26 +23,26 @@ void Game::_init() {
 	states.append("black_override");
 	states.append("white_override");
 	_init_states(states);
-	grid = static_cast<godot::Grid*>(GridScene->instance());
-	grid->_rows = 4;
-	grid->_columns = 4;
+    grid = static_cast<godot::Grid*>(GridScene->instance());
+	grid->init(5, 5);
+	// grid->_rows = 4;
+	// grid->_columns = 4;
 }
 
 void Game::_ready() {
-	print_states();
 	add_child(grid);
-	grid->_rows = 3;
-	grid->_columns = 3;
+    Godot::print("=============Game _ready============");
+    Godot::print(String::num(grid_rows));
+    Godot::print(String::num(grid_columns));
+	print_states();
 }
 
-void Game::init() {
-    int rows = 3;
-	int columns = 4;
+void Game::init(int rows, int columns) {
     Godot::print("Game init grid init");
-	grid->_rows = 2;
-	grid->_columns = 2;
-    grid->init(rows, columns);
-    
+    grid_rows = rows;
+    grid_columns = columns;
+	// grid->_rows = 2;
+	// grid->_columns = 2;    
     //godot::Grid* grid = static_cast<godot::Grid*>(GridScene->instance());
     //int rows=2;
     //int columns=2;
