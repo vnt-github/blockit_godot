@@ -24,8 +24,8 @@ namespace godot {
         private:
             Ref<PackedScene> GridScene;
             Ref<PackedScene> BlockScene;
-            Grid* grid;
             int grid_rows;
             int grid_columns;
+			Grid* grid;
     };
 }

@@ -23,17 +23,19 @@ void Game::_init() {
 	states.append("black_override");
 	states.append("white_override");
 	_init_states(states);
-    grid = static_cast<godot::Grid*>(GridScene->instance());
-	grid->init(5, 5);
+
 	// grid->_rows = 4;
 	// grid->_columns = 4;
 }
 
 void Game::_ready() {
-	add_child(grid);
-    Godot::print("=============Game _ready============");
-    Godot::print(String::num(grid_rows));
-    Godot::print(String::num(grid_columns));
+	Godot::print("=============Game _ready============");
+	Godot::print(String::num(grid_rows));
+	Godot::print(String::num(grid_columns));
+	//godot::Grid* grid = Object::cast_to<godot::Grid>(GridScene->instance());
+	godot::Grid* new_grid = godot::Grid::_new();
+	new_grid->init(grid_rows, grid_columns);
+	add_child(new_grid);
 	print_states();
 }
 
@@ -43,7 +45,6 @@ void Game::init(int rows, int columns) {
     grid_columns = columns;
 	// grid->_rows = 2;
 	// grid->_columns = 2;    
-    //godot::Grid* grid = static_cast<godot::Grid*>(GridScene->instance());
     //int rows=2;
     //int columns=2;
     //add_child(grid);
@@ -51,7 +52,7 @@ void Game::init(int rows, int columns) {
     //grid->set_position(Vector2(x, y));
     // // TODO: call grid.init here
 
-    // godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+    // godot::Block* block = Object::cast_to<godot::Block>(BlockScene->instance());
     // add_child(block);
     // block->set_position(Vector2(x, y));
 
