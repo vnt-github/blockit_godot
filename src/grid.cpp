@@ -32,6 +32,8 @@ void Grid::_register_methods() {
 // TODO: where to initialize and set value of grid_size
 // TODO: how to initialize
 Grid::Grid() {
+	_rows = 0;
+	_columns = 0;
 }
 
 Grid::~Grid() {
@@ -55,9 +57,10 @@ void Grid::_ready() {
     Godot::print(String::num(_rows));
     Godot::print("=================_ready end===============");
 	//TODO: set the _rows and _columns from the Game init
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 4; j++) {
-			godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+	for (int i = 0; i < _rows; i++) {
+		for (int j = 0; j < _columns; j++) {
+			Block* block = static_cast<Block*>(BlockScene->instance());
+            //godot::Block* block = Object::cast_to<godot::Block>(BlockScene->instance());
 			int margin = 150;
 			block->init(grid_margins + Vector2(i*margin, j*margin));
 			add_child(block);
@@ -67,13 +70,9 @@ void Grid::_ready() {
 
 void Grid::init(int rows, int columns) {
     Godot::print("=================init begin===============");
-	Godot::print(String::num(_rows));
-	Godot::print(String::num(_columns));
     Godot::print(String::num(rows));
     Godot::print(String::num(columns));
     Godot::print("=================init set===============");
-    Grid::_rows = rows;
-    Grid::_columns = columns;
     _rows = rows;
     _columns = columns;
 	Godot::print(String::num(_rows));
@@ -87,12 +86,14 @@ void Grid::touch_input() {
         Vector2 first_touch = get_global_mouse_position();
         Godot::print(first_touch);
 
-        godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
-        block->init(first_touch);
-        add_child(block);
+        // godot::Block* block = static_cast<godot::Block*>(BlockScene->instance());
+		//Block* block = Block::_new();
+        // TODO: godot::Block* block = Object::cast_to<godot::Block>(BlockScene->instance());
+        // block->init(first_touch);
+        // add_child(block);
 
 
-        //godot::Triangle* triangle = static_cast<godot::Triangle*>(TriangleScene->instance());
+        //godot::Triangle* triangle = Object::cast_to<godot::Triangle>(TriangleScene->instance());
         // Triangle* triangle = Object::cast_to<Triangle>(TriangleScene->instance());
         //triangle->init(first_touch);
         //add_child(triangle);

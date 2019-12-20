@@ -36,41 +36,52 @@ void Block::_init() {
 
 // TODO: what will be best x_pos, y_pos to represent left upper corner, centre etc.
 void Block::init(Vector2 pos) {
-    ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
+	// position = pos;
     set_position(pos);
-    Sprite* block = static_cast<Sprite*>(get_node("Sprite"));
-    TextureButton* TriangleLeftNode = static_cast<TextureButton*>(get_node("TriangleLeft"));
-    int max = 2;
-    int min = 0;
-    int range = max - min + 1;
-    // TODO: int num = srand(time(0)) % range + min;
-    int num = rand() % range + min;
-    String block_texture_path;
-    if (num==0) {
-        block_texture_path = String("res://art/black_block.png");
-    } else {
-        block_texture_path = String("res://art/white_block.png");
-    }
+	// set_scale(Vector2(0.3, 0.3));
+    //Sprite* block = static_cast<Sprite*>(get_node("Sprite"));
+    //TextureButton* TriangleLeftNode = static_cast<TextureButton*>(get_node("TriangleLeft"));
+    // TODO: Sprite* block = Object::cast_to<Sprite>(get_node("Sprite"));
+    // TODO: TextureButton* TriangleLeftNode = Object::cast_to<TextureButton>(get_node("TriangleLeft"));
+
 
     // QUERY: why below does't work gives same unix socket error
     // String block_texture_path = String("res://art/") + block_types[num] + String("_block.png");
     // block->set_texture(resourceLoader->load("res://art/"+ block_types[num] + "_block.png"));
 
-    block->set_texture(resourceLoader->load(block_texture_path));
-    TriangleLeftNode->set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
-    TriangleLeftNode->set_hover_texture(resourceLoader->load("res://art/black_triangle.png"));
+    //block->set_texture(resourceLoader->load(block_texture_path));
+    //TriangleLeftNode->set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
+    //TriangleLeftNode->set_hover_texture(resourceLoader->load("res://art/black_triangle.png"));
     // TODO: Error: ERROR: _get_socket_error: Socket error: 10054
     //       At: drivers/unix/net_socket_posix.cpp:190
-    // godot::Triangle* triangle1 = static_cast<godot::Triangle*>(TriangleScene->instance());
+    // godot::Triangle* triangle1 = Object::cast_to<godot::Triangle>(TriangleScene->instance());
     // add_child(triangle1);
 }
 
 
 void Block::_ready() {
-	Triangle* triangle = static_cast<godot::Triangle*>(BlockTriangleScene->instance());
+	ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
+	int max = 2;
+	int min = 0;
+	int range = max - min + 1;
+	// TODO: int num = srand(time(0)) % range + min;
+	int num = rand() % range + min;
+	String block_texture_path;
+	if (num == 0) {
+		block_texture_path = String("res://art/black_block.png");
+	}
+	else {
+		block_texture_path = String("res://art/white_block.png");
+	}
+	static_cast<Sprite*>(get_node("Sprite"))->set_texture(resourceLoader->load(block_texture_path));
+	// set_position(position);
+	//Triangle* triangle = static_cast<godot::Triangle*>(BlockTriangleScene->instance());
+
+    // TODO: Triangle* triangle = Object::cast_to<godot::Triangle>(BlockTriangleScene->instance());
 	// TODO: why below gives error
-    //triangle->init(get_position());
-	add_child(triangle);
+	//double degree_in_radiants_90 = 1.57;
+    //triangle->init(get_position(), degree_in_radiants_90);
+	//add_child(triangle);
 }
 
 void Block::_process(float delta) {

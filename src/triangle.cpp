@@ -21,11 +21,13 @@ void Triangle::_init() {
 	is_occupied_by = none;
 }
 void Triangle::_ready() {
+	// set_position(position);
 }
 
-void Triangle::init(Vector2 pos) {
+void Triangle::init(Vector2 pos, double rotation) {
     // TODO: Unhandled exception at 0x0000000002746A80 in Godot_v3.1.1-stable_win64.exe: 0xC0000005: Access violation executing location 0x0000000002746A80.
     // - [x] unmatched Node2d and Texture Button
+	// position = pos;
     set_position(pos);
 }
 

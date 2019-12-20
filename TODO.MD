@@ -28,6 +28,7 @@
             - [ ] else: disabled: true
         - [ ] on succesfull state update emit randomize grid blocks
 
-- [ ] equi distribute blocks
-- [ ] make the logic for triangles detection block geometry agonstic to extend gameplay to non square grids
+- [1] equi distribute blocks
+- [2] implement state based turn system
+- [2] make the logic for triangles detection block geometry agonstic to extend gameplay to non square grids
 	- [ ] polyit => blockit with regular polygons made up of triangles

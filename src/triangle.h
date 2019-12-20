@@ -16,12 +16,13 @@ namespace godot {
             Triangle();
             ~Triangle();
             
-            void init(Vector2);
+            void init(Vector2, double);
             void _init();
             void _ready();
 
             void _process(float delta);
 			void _on_pressed();
+			Vector2 position;
 	private:
 		owners is_occupied_by;
     };
