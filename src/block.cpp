@@ -61,18 +61,42 @@ void Block::init(Vector2 pos) {
 
 void Block::_ready() {
 	ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
+	TextureButton* TriangleLeft = static_cast<TextureButton*>(get_node("TriangleLeft"));
+	TextureButton* TriangleRight = static_cast<TextureButton*>(get_node("TriangleRight"));
+	TextureButton* TriangleUp = static_cast<TextureButton*>(get_node("TriangleUp"));
+	TextureButton* TriangleDown = static_cast<TextureButton*>(get_node("TriangleDown"));
+	Ref<Resource> blackTriangle = resourceLoader->load("res://art/black_triangle.png");
+	Ref<Resource> whiteTriangle = resourceLoader->load("res://art/white_triangle.png");
 	int max = 2;
 	int min = 0;
 	int range = max - min + 1;
 	// TODO: int num = srand(time(0)) % range + min;
 	int num = rand() % range + min;
+	Ref<Resource> hover_resource;
 	String block_texture_path;
 	if (num == 0) {
 		block_texture_path = String("res://art/black_block.png");
+		block_type = black;
+		hover_resource = blackTriangle;
 	}
 	else {
 		block_texture_path = String("res://art/white_block.png");
+		block_type = white;
+		hover_resource = whiteTriangle;
 	}
+
+	//TriangleLeft->set_normal_texture(blackTriangle);
+	TriangleLeft->set_hover_texture(hover_resource);
+
+	//TriangleRight->set_normal_texture(blackTriangle);
+	TriangleRight->set_hover_texture(hover_resource);
+
+	//TriangleUp->set_normal_texture(blackTriangle);
+	TriangleUp->set_hover_texture(hover_resource);
+
+	//TriangleDown->set_normal_texture(blackTriangle);
+	TriangleDown->set_hover_texture(hover_resource);
+
 	static_cast<Sprite*>(get_node("Sprite"))->set_texture(resourceLoader->load(block_texture_path));
 	// set_position(position);
 	//Triangle* triangle = static_cast<godot::Triangle*>(BlockTriangleScene->instance());

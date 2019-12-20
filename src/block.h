@@ -12,6 +12,7 @@
 #include <Node2D.hpp>
 #include <Ref.hpp>
 #include <PackedScene.hpp>
+#include "Game.h"
 
 namespace godot {
     /** TODO: build this
@@ -39,6 +40,7 @@ namespace godot {
 	private:
 		Ref<PackedScene> BlockTriangleScene;
 		Vector2 position;
+		owners block_type;
     };
 }
 #endif

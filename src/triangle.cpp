@@ -37,29 +37,52 @@ void Triangle::_on_pressed() {
 	if (is_occupied_by != none) return;
 	is_occupied_by = owners(rand() % 2); // get current turn; // for now it's random
 	is_occupied_by = static_cast<owners>(rand() % 2 + 1);
+
+	int num = rand() % 2;
+	String triangle_texture_path;
+
 	switch (is_occupied_by)
 	{
 	case none:
-		Godot::print("invalid none");
+		Godot::print("first turn none");
+		//if (num == 0) {
+		//	set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
+		//	set_hover_texture(resourceLoader->load(String("res://art/black_triangle.png")));
+		//	is_occupied_by = white;
+		//}
+		//else {
+		//	set_normal_texture(resourceLoader->load(String("res://art/black_triangle.png")));
+		//	set_hover_texture(resourceLoader->load(String("res://art/white_triangle.png")));
+		//	is_occupied_by = black;
+		//}
+		set_visible(true);
+		break;
 		// get current turn and set is_occupied_by assuming it's not possible to call event on disabled
 	// safe checks
 	case black:
-		is_occupied_by = black; // get current turn
+		// get current turn
 		// Godot::print("black");
-		texture_path = String("res://art/black_triangle.png");
+		set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
+		set_hover_texture(resourceLoader->load(String("res://art/black_triangle.png")));
+		is_occupied_by = white;
 		break;
 	case white:
-		is_occupied_by = white; // get current turn
+		// get current turn
 		// Godot::print("white");
-		texture_path = String("res://art/white_triangle.png");
+		set_normal_texture(resourceLoader->load(String("res://art/black_triangle.png")));
+		set_hover_texture(resourceLoader->load(String("res://art/white_triangle.png")));
+		is_occupied_by = black;
 		break;
 	default:
-		Godot::print("invalid _on_pressed called on ", is_occupied_by);
+		Godot::print("invalid _on_pressed called on ");
+		Godot::print(is_occupied_by);
 		break;
 	}
-	set_disabled(true);
-	set_normal_texture(resourceLoader->load(texture_path));
-	Godot::print("_on_pressed", is_occupied_by, is_visible());
+	//set_disabled(true);
+	Godot::print("_on_pressed");
+	Godot::print(is_occupied_by);
+	Godot::print(is_visible());
+	Godot::print("is_pressed done");
 }
 
 void Triangle::_process(float delta) {
