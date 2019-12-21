@@ -7,7 +7,7 @@
 #include "StateMachine.h"
 #include "grid.h"
 
-enum owners { none, black, white };
+enum class owners { none, black, white };
 
 namespace godot {
     class Game: public StateMachine {
@@ -18,9 +18,11 @@ namespace godot {
             Game();
             ~Game();
 
+			void _on_finished();
             void init(int, int);
             void _init();
             void _ready();
+			void change_turn();
         private:
             Ref<PackedScene> GridScene;
             Ref<PackedScene> BlockScene;

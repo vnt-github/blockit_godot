@@ -38,12 +38,13 @@ namespace godot {
 
 		void print_states();
 
-	private:
 		Dictionary _states;
 		Variant parent;
 		int state = 0;
 		int previous_state = 0;
-
+		int get_current_state() { return state; }
+		int get_previous_state() { return previous_state; }
+	private:
 
 		// state specific logic called in *_process methods
 		virtual void _state_logic(float delta);

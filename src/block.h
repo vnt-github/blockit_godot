@@ -32,15 +32,16 @@ namespace godot {
             Block();
             ~Block();
 
+			void _on_finished();
             void init(Vector2);
             void _init();
             void _ready();
             void _process(float delta);
+			owners block_type;
             String block_types[2];
 	private:
 		Ref<PackedScene> BlockTriangleScene;
 		Vector2 position;
-		owners block_type;
     };
 }
 #endif

@@ -22,7 +22,10 @@ namespace godot {
 
             void _process(float delta);
 			void _on_pressed();
+			void _on_state_changed(int);
+			int _turn = 0;
 			Vector2 position;
+			owners block_type;
 	private:
 		owners is_occupied_by;
     };

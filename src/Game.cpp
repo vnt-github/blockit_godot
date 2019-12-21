@@ -10,6 +10,8 @@ void Game::_register_methods() {
     register_method("_init", &Game::_init, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("_ready", &Game::_ready, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("init", &Game::init, GODOT_METHOD_RPC_MODE_DISABLED);
+	register_method("_on_finished", &Game::_on_finished, GODOT_METHOD_RPC_MODE_DISABLED);
+	register_signal<Game>("state_changed", "turn", GODOT_VARIANT_TYPE_INT);
 }
 
 void Game::_init() {
@@ -36,6 +38,13 @@ void Game::_ready() {
 	godot::Grid* new_grid = godot::Grid::_new();
 	new_grid->init(grid_rows, grid_columns);
 	add_child(new_grid);
+	Array childrens = new_grid->get_children();
+	for (int i = 0; i < childrens.size(); i++)
+	{
+		Godot::print("children");
+		Godot::print(childrens[i]);
+	}
+	
 	print_states();
 }
 
@@ -66,4 +75,30 @@ Game::Game()
 Game::~Game()
 {
 
+}
+
+
+void Game::change_turn() {
+	if (state == (int)_states["first_turn"] || !state) {
+		Godot::print("null state");
+		Godot::print(String::num(state));
+		state = (int)_states["white_turn"];
+	}
+	else if (state == (int)_states["black_turn"]) {
+		Godot::print("black current_state");
+		Godot::print(String::num(state));
+		state = (int)_states["white_turn"];
+	}
+	else if (state == (int)_states["white_turn"]) {
+		Godot::print("white current_state");
+		Godot::print(String::num(state));
+		state = (int)_states["black_turn"];
+	}
+	emit_signal("state_changed", state);
+}
+
+
+void Game::_on_finished() {
+	Godot::print("game _on_finished override");
+	change_turn();
 }

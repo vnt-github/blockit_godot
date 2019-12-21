@@ -14,6 +14,7 @@
 #include <Sprite.hpp>
 #include <Texture.hpp>
 #include <TextureButton.hpp>
+#include "Game.h"
 
 using namespace godot;
 
@@ -22,6 +23,7 @@ void Block::_register_methods() {
     register_method("_init", &Block::_init);
     register_method("_ready", &Block::_ready);
     register_method("init", &Block::init);
+	register_method("_on_finished", &Block::_on_finished);
 }
 
 Block::Block() {
@@ -61,13 +63,13 @@ void Block::init(Vector2 pos) {
 
 void Block::_ready() {
 	ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
-	TextureButton* TriangleLeft = static_cast<TextureButton*>(get_node("TriangleLeft"));
+	Triangle* TriangleLeft = static_cast<Triangle*>(get_node("TriangleLeft"));
 	TextureButton* TriangleRight = static_cast<TextureButton*>(get_node("TriangleRight"));
 	TextureButton* TriangleUp = static_cast<TextureButton*>(get_node("TriangleUp"));
 	TextureButton* TriangleDown = static_cast<TextureButton*>(get_node("TriangleDown"));
 	Ref<Resource> blackTriangle = resourceLoader->load("res://art/black_triangle.png");
 	Ref<Resource> whiteTriangle = resourceLoader->load("res://art/white_triangle.png");
-	int max = 2;
+	int max = 1;
 	int min = 0;
 	int range = max - min + 1;
 	// TODO: int num = srand(time(0)) % range + min;
@@ -76,17 +78,22 @@ void Block::_ready() {
 	String block_texture_path;
 	if (num == 0) {
 		block_texture_path = String("res://art/black_block.png");
-		block_type = black;
+		block_type = owners::black;
 		hover_resource = blackTriangle;
 	}
 	else {
 		block_texture_path = String("res://art/white_block.png");
-		block_type = white;
+		block_type = owners::white;
 		hover_resource = whiteTriangle;
 	}
 
 	//TriangleLeft->set_normal_texture(blackTriangle);
 	TriangleLeft->set_hover_texture(hover_resource);
+	Node* game = get_parent()->get_parent();
+	TriangleLeft->connect("finished", game, "_on_finished");
+	TriangleLeft->connect("finished", this, "_on_finished");
+	game->connect("state_changed", TriangleLeft, "_on_state_changed");
+	TriangleLeft->block_type = block_type;
 
 	//TriangleRight->set_normal_texture(blackTriangle);
 	TriangleRight->set_hover_texture(hover_resource);
@@ -110,4 +117,8 @@ void Block::_ready() {
 
 void Block::_process(float delta) {
 
+}
+
+void Block::_on_finished() {
+	Godot::print("block _on_finished");
 }
