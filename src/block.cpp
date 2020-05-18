@@ -63,7 +63,9 @@ void Block::init(Vector2 pos) {
 
 void Block::_ready() {
 	ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
+	//NOTE: below does not work cos the types of TriangleLeft, TriangleRight etc is texture button and is not converted to Triangle
 	Triangle* TriangleLeft = static_cast<Triangle*>(get_node("TriangleLeft"));
+	//Triangle* TriangleLeft = Object::cast_to<godot::Triangle>(get_node("TriangleLeft"));
 	TextureButton* TriangleRight = static_cast<TextureButton*>(get_node("TriangleRight"));
 	TextureButton* TriangleUp = static_cast<TextureButton*>(get_node("TriangleUp"));
 	TextureButton* TriangleDown = static_cast<TextureButton*>(get_node("TriangleDown"));
@@ -93,7 +95,8 @@ void Block::_ready() {
 	TriangleLeft->connect("finished", game, "_on_finished");
 	TriangleLeft->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleLeft, "_on_state_changed");
-	TriangleLeft->block_type = block_type;
+	//NOTE: and as the TriangleLeft is of type texture button so we cannot set the block_type which is the property of Triangle
+	//TriangleLeft->block_type = block_type;
 
 	//TriangleRight->set_normal_texture(blackTriangle);
 	TriangleRight->set_hover_texture(hover_resource);

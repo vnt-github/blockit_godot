@@ -7,7 +7,7 @@ func _ready():
 	# var test = load("res://grid/Grid.gdns").new()
 	# # this loads the Grid.gdns as resource and .new() instantiates it and then calls get_block on this instance
 	# print(test.get_block(1,2))
-	yield(get_tree().create_timer(5.0), "timeout")
+	# yield(get_tree().create_timer(5.0), "timeout")
 	
 	var game = gameScene.instance()
 	game.init(2, 2);
