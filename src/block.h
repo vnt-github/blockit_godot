@@ -41,7 +41,6 @@ namespace godot {
             String block_types[2];
 	private:
 		Ref<PackedScene> BlockTriangleScene;
-		Vector2 position;
     };
 }
 #endif

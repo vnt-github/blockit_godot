@@ -16,13 +16,15 @@ void Triangle::_register_methods() {
 	register_signal<Triangle>("finished", "override", GODOT_VARIANT_TYPE_STRING);
 }
 
-Triangle::Triangle() {}
-
-Triangle::~Triangle() {}
-
-void Triangle::_init() {
+Triangle::Triangle() {
 	is_occupied_by = owners::none;
 	block_type = owners::none;
+}
+
+Triangle::~Triangle() {
+}
+
+void Triangle::_init() {
 }
 void Triangle::_ready() {
 	// set_position(position);
@@ -31,7 +33,6 @@ void Triangle::_ready() {
 void Triangle::init(Vector2 pos, double rotation) {
     // TODO: Unhandled exception at 0x0000000002746A80 in Godot_v3.1.1-stable_win64.exe: 0xC0000005: Access violation executing location 0x0000000002746A80.
     // - [x] unmatched Node2d and Texture Button
-	// position = pos;
     set_position(pos);
 }
 
