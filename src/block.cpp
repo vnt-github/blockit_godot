@@ -62,11 +62,16 @@ void Block::init(Vector2 pos) {
 
 void Block::_ready() {
 	ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
-	Triangle* TriangleLeft = static_cast<Triangle*>(get_node("TriangleLeft"));
+	// NOTE: below won't work and will behave the same
+	// Triangle* TriangleLeftTexture = static_cast<Triangle*>(get_node("TriangleLeft"));
+	// Triangle* TriangleLeft = static_cast<godot::Triangle*>(BlockTriangleScene->instance());
+	// TriangleLeft->set_position(TriangleLeftTexture->get_position());
+	// TriangleLeft->set_rotation(TriangleLeftTexture->get_rotation());
 	//Triangle* TriangleLeft = Object::cast_to<godot::Triangle>(get_node("TriangleLeft"));
-	TextureButton* TriangleRight = static_cast<TextureButton*>(get_node("TriangleRight"));
-	TextureButton* TriangleUp = static_cast<TextureButton*>(get_node("TriangleUp"));
-	TextureButton* TriangleDown = static_cast<TextureButton*>(get_node("TriangleDown"));
+	Triangle* TriangleLeft = static_cast<Triangle*>(get_node("TriangleLeft"));
+	Triangle* TriangleRight = static_cast<Triangle*>(get_node("TriangleRight"));
+	Triangle* TriangleUp = static_cast<Triangle*>(get_node("TriangleUp"));
+	Triangle* TriangleDown = static_cast<Triangle*>(get_node("TriangleDown"));
 	Ref<Resource> blackTriangle = resourceLoader->load("res://art/black_triangle.png");
 	Ref<Resource> whiteTriangle = resourceLoader->load("res://art/white_triangle.png");
 	int max = 1;
@@ -87,22 +92,32 @@ void Block::_ready() {
 		hover_resource = whiteTriangle;
 	}
 
+	Node* game = get_parent()->get_parent();
 	//TriangleLeft->set_normal_texture(blackTriangle);
 	TriangleLeft->set_hover_texture(hover_resource);
-	Node* game = get_parent()->get_parent();
 	TriangleLeft->connect("finished", game, "_on_finished");
 	TriangleLeft->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleLeft, "_on_state_changed");
-	TriangleLeft->block_type = block_type;
+	add_child(TriangleLeft);
 
 	//TriangleRight->set_normal_texture(blackTriangle);
 	TriangleRight->set_hover_texture(hover_resource);
-
+	TriangleRight->connect("finished", game, "_on_finished");
+	TriangleRight->connect("finished", this, "_on_finished");
+	game->connect("state_changed", TriangleRight, "_on_state_changed");
+	
 	//TriangleUp->set_normal_texture(blackTriangle);
 	TriangleUp->set_hover_texture(hover_resource);
+	TriangleUp->connect("finished", game, "_on_finished");
+	TriangleUp->connect("finished", this, "_on_finished");
+	game->connect("state_changed", TriangleUp, "_on_state_changed");
+	
 
 	//TriangleDown->set_normal_texture(blackTriangle);
 	TriangleDown->set_hover_texture(hover_resource);
+	TriangleDown->connect("finished", game, "_on_finished");
+	TriangleDown->connect("finished", this, "_on_finished");
+	game->connect("state_changed", TriangleDown, "_on_state_changed");
 
 	static_cast<Sprite*>(get_node("Sprite"))->set_texture(resourceLoader->load(block_texture_path));
 	// set_position(position);

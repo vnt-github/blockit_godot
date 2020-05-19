@@ -26,7 +26,6 @@ namespace godot {
 			int _turn = 0;
             // TODO: why we cannot have Vector2 type as an attribute??
 			// Vector2 a_position;
-            owners block_type;
 	private:
 		owners is_occupied_by;
     };
