@@ -24,6 +24,7 @@ void Block::_register_methods() {
     register_method("_ready", &Block::_ready);
     register_method("init", &Block::init);
 	register_method("_on_finished", &Block::_on_finished);
+	register_property<Block, int64_t>("block_type", &Block::block_type, 0, GODOT_METHOD_RPC_MODE_DISABLED);
 }
 
 Block::Block() {
@@ -83,12 +84,12 @@ void Block::_ready() {
 	String block_texture_path;
 	if (num == 0) {
 		block_texture_path = String("res://art/black_block.png");
-		block_type = owners::black;
+		block_type = 1;
 		hover_resource = blackTriangle;
 	}
 	else {
 		block_texture_path = String("res://art/white_block.png");
-		block_type = owners::white;
+		block_type = 2;
 		hover_resource = whiteTriangle;
 	}
 
@@ -98,19 +99,22 @@ void Block::_ready() {
 	TriangleLeft->connect("finished", game, "_on_finished");
 	TriangleLeft->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleLeft, "_on_state_changed");
-	add_child(TriangleLeft);
+	TriangleLeft->set("block_type", block_type);
 
 	//TriangleRight->set_normal_texture(blackTriangle);
 	TriangleRight->set_hover_texture(hover_resource);
 	TriangleRight->connect("finished", game, "_on_finished");
 	TriangleRight->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleRight, "_on_state_changed");
+	TriangleRight->set("block_type", block_type);
 	
 	//TriangleUp->set_normal_texture(blackTriangle);
 	TriangleUp->set_hover_texture(hover_resource);
 	TriangleUp->connect("finished", game, "_on_finished");
 	TriangleUp->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleUp, "_on_state_changed");
+	TriangleUp->set("block_type", block_type);
+
 	
 
 	//TriangleDown->set_normal_texture(blackTriangle);
@@ -118,6 +122,7 @@ void Block::_ready() {
 	TriangleDown->connect("finished", game, "_on_finished");
 	TriangleDown->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleDown, "_on_state_changed");
+	TriangleDown->set("block_type", block_type);
 
 	static_cast<Sprite*>(get_node("Sprite"))->set_texture(resourceLoader->load(block_texture_path));
 	// set_position(position);

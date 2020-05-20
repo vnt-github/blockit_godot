@@ -78,11 +78,21 @@ Game::~Game()
 }
 
 
-void Game::change_turn() {
+void Game::change_turn(int first_move) {
 	if (state == (int)_states["first_turn"] || !state) {
 		Godot::print("null state");
 		Godot::print(String::num(state));
-		state = (int)_states["white_turn"];
+		switch (first_move)
+		{
+		//for the black turn
+		case 1:
+			state = (int)_states["white_turn"];
+			break;
+		//for the white turn
+		case 2:
+			state = (int)_states["black_turn"];
+			break;
+		}
 	}
 	else if (state == (int)_states["black_turn"]) {
 		Godot::print("black current_state");
@@ -98,7 +108,7 @@ void Game::change_turn() {
 }
 
 
-void Game::_on_finished() {
+void Game::_on_finished(int first_move) {
 	Godot::print("game _on_finished override");
-	change_turn();
+	change_turn(first_move);
 }

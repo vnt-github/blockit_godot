@@ -11,6 +11,7 @@ zconf.h.included
 *.exp
 *.lib
 *.obj
+*obj.enc
 *.TMP
 *.idb
 *.pdb

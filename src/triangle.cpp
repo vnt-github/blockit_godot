@@ -15,16 +15,21 @@ void Triangle::_register_methods() {
 	register_method("_on_pressed", &Triangle::_on_pressed);
 	register_method("_on_state_changed", &Triangle::_on_state_changed);
 	register_signal<Triangle>("finished", "override", GODOT_VARIANT_TYPE_STRING);
+	register_property<Triangle, int64_t>("block_type", &Triangle::block_type, 0, GODOT_METHOD_RPC_MODE_DISABLED);
 }
 
 Triangle::Triangle() {
 	is_occupied_by = owners::none;
+	block_type = 0;
+	_turn = 0;
 }
 
 Triangle::~Triangle() {
 }
 
 void Triangle::_init() {
+	block_type = 0;
+	_turn = 0;
 }
 void Triangle::_ready() {
 	// set_position(position);
@@ -51,26 +56,9 @@ void Triangle::_on_pressed() {
 	Godot::print(get_parent()->get_name());
 	Godot::print(block->get_name());
 
-	// TODO: fill this into a functino get block type
-	// TODO: fix this working by HACK: block_type on texture of Sprite
-	auto texture = static_cast<Sprite*>(get_node("../Sprite"))->get_texture();
-	String block_texture_path = texture->get_path();
-	Godot::print(block_texture_path);
-	owners block_type;
-
-	if (block_texture_path == String("res://art/white_block.png")) {
-		block_type = owners::white;
-	}
-	else if (block_texture_path == String("res://art/black_block.png")) {
-		block_type = owners::black;
-	}
-	else {
-		block_type == owners::none;
-	}
-
-	String is_none = (block_type == owners::none ? "none" : "not none");
-	String is_black = (block_type == owners::black ? "black" : "not black");
-	String is_white = (block_type == owners::white ? "white" : "not white");
+	String is_none = (block_type == 0 ? "none" : "not none");
+	String is_black = (block_type == 1 ? "black" : "not black");
+	String is_white = (block_type == 2 ? "white" : "not white");
 
 	Godot::print(is_none);
 	Godot::print(is_black);
@@ -81,7 +69,7 @@ void Triangle::_on_pressed() {
 	case owners::none:
 		Godot::print("first turn none");
 		if (_turn == 0) {
-			if (block_type == owners::white) {
+			if (block_type == 2) {
 				set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
 				set_hover_texture(resourceLoader->load(String("res://art/black_triangle.png")));
 				is_occupied_by = owners::white;
@@ -90,21 +78,21 @@ void Triangle::_on_pressed() {
 				set_hover_texture(resourceLoader->load(String("res://art/white_triangle.png")));
 				is_occupied_by = owners::black;
 			}
-			emit_signal("finished", "override");
+			emit_signal("finished", block_type);
 		}
 		//TODO: add logic to check the override only to enter here
-		else if (_turn == 1 && block_type == owners::white /** is_override **/) {
+		else if (_turn == 2 && block_type == 2 /** is_override **/) {
 			set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
 			set_hover_texture(resourceLoader->load(String("res://art/black_triangle.png")));
 			is_occupied_by = owners::white;
-			emit_signal("finished", "override");
+			emit_signal("finished", block_type);
 		}
 		//TODO: add logic to check the override only to enter here
-		else if (_turn == 2 && block_type == owners::black /** is_override **/) {
+		else if (_turn == 1 && block_type == 1 /** is_override **/) {
 			set_normal_texture(resourceLoader->load(String("res://art/black_triangle.png")));
 			set_hover_texture(resourceLoader->load(String("res://art/white_triangle.png")));
 			is_occupied_by = owners::black;
-			emit_signal("finished", "override");
+			emit_signal("finished", block_type);
 		}
 		set_visible(true);
 		break;

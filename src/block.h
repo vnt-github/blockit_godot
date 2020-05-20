@@ -37,9 +37,9 @@ namespace godot {
             void _init();
             void _ready();
             void _process(float delta);
-			owners block_type;
             String block_types[2];
 	private:
+        int64_t block_type;
 		Ref<PackedScene> BlockTriangleScene;
     };
 }

@@ -10,10 +10,10 @@ func _ready():
 	# yield(get_tree().create_timer(5.0), "timeout")
 	
 	var game = gameScene.instance()
-	game.init(2, 2);
+	game.init(3, 4);
 	add_child(game);
 	
-	yield(get_tree().create_timer(5.0), "timeout")
+	# yield(get_tree().create_timer(5.0), "timeout")
 	
 	# yield(get_tree().create_timer(2.0), "timeout")
 	# game.init(1, 2);
@@ -25,9 +25,9 @@ func _ready():
 	# grid.init(2, 2)
 	# remove_child(game)
 	# game.queue_free()
-	var game2 = gameScene.instance()
-	game2.init(3,4)
-	add_child(game2)
+	# var game2 = gameScene.instance()
+	# game2.init(3,4)
+	# add_child(game2)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

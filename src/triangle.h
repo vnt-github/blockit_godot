@@ -23,11 +23,12 @@ namespace godot {
             void _process(float delta);
 			void _on_pressed();
 			void _on_state_changed(int);
-			int _turn = 0;
-            // TODO: why we cannot have Vector2 type as an attribute??
+			int _turn;
+            // TODO: why we cannot have Vector2 or int64_t block_type type as an attribute below these??
 			// Vector2 a_position;
 	private:
 		owners is_occupied_by;
+        int64_t block_type;
     };
 }
 #endif
