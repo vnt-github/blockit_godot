@@ -12,7 +12,6 @@
 #include <Node2D.hpp>
 #include <Ref.hpp>
 #include <PackedScene.hpp>
-#include "Game.h"
 
 namespace godot {
     /** TODO: build this
@@ -33,10 +32,12 @@ namespace godot {
             ~Block();
 
 			void _on_finished();
-            void init(Vector2);
+            void init(int, int, Vector2);
             void _init();
             void _ready();
             void _process(float delta);
+            int grid_i;
+            int grid_j;
             String block_types[2];
 	private:
         int64_t block_type;

@@ -108,7 +108,8 @@ void Game::change_turn(int first_move) {
 }
 
 
-void Game::_on_finished(int first_move) {
+void Game::_on_finished(int first_move, String block_name) {
 	Godot::print("game _on_finished override");
+	Grid* grid_aux = grid;
 	change_turn(first_move);
 }

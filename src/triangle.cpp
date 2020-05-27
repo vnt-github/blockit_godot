@@ -51,10 +51,10 @@ void Triangle::_on_pressed() {
 	Node* parent = get_parent();
 
 	Block* block = static_cast<Block*>(get_node(".."));
-
+	String block_name = block->get_name();
 	Godot::print("parent name");
 	Godot::print(get_parent()->get_name());
-	Godot::print(block->get_name());
+	Godot::print(block_name);
 
 	String is_none = (block_type == 0 ? "none" : "not none");
 	String is_black = (block_type == 1 ? "black" : "not black");
@@ -78,21 +78,21 @@ void Triangle::_on_pressed() {
 				set_hover_texture(resourceLoader->load(String("res://art/white_triangle.png")));
 				is_occupied_by = owners::black;
 			}
-			emit_signal("finished", block_type);
+			emit_signal("finished", block_type, block_name, get_name());
 		}
 		//TODO: add logic to check the override only to enter here
 		else if (_turn == 2 && block_type == 2 /** is_override **/) {
 			set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
 			set_hover_texture(resourceLoader->load(String("res://art/black_triangle.png")));
 			is_occupied_by = owners::white;
-			emit_signal("finished", block_type);
+			emit_signal("finished", block_type, block_name, get_name());
 		}
 		//TODO: add logic to check the override only to enter here
 		else if (_turn == 1 && block_type == 1 /** is_override **/) {
 			set_normal_texture(resourceLoader->load(String("res://art/black_triangle.png")));
 			set_hover_texture(resourceLoader->load(String("res://art/white_triangle.png")));
 			is_occupied_by = owners::black;
-			emit_signal("finished", block_type);
+			emit_signal("finished", block_type, block_name, get_name());
 		}
 		set_visible(true);
 		break;

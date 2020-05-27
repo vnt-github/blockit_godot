@@ -18,7 +18,7 @@ namespace godot {
             Game();
             ~Game();
 
-			void _on_finished(int);
+			void _on_finished(int, String);
             void init(int, int);
             void _init();
             void _ready();

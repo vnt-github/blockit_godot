@@ -10,7 +10,7 @@ func _ready():
 	# yield(get_tree().create_timer(5.0), "timeout")
 	
 	var game = gameScene.instance()
-	game.init(3, 4);
+	game.init(4, 3);
 	add_child(game);
 	
 	# yield(get_tree().create_timer(5.0), "timeout")

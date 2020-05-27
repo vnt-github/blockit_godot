@@ -1,9 +1,13 @@
 #pragma once
 
+#include "block.h"
+#include <map>
+#include <vector>
 #include <Godot.hpp>
 #include <Node2D.hpp>
 #include <Ref.hpp>
 #include <PackedScene.hpp>
+#include "StateMachine.h"
 
 namespace godot {
     /** TODO: build this
@@ -17,7 +21,7 @@ namespace godot {
      * also contains logic for randomization and determining
      * blocked and hence turn based on override. 
      */
-    class Grid : public Node2D {
+    class Grid : public StateMachine {
         GODOT_CLASS(Grid, Node2D);
         public:
             static void _register_methods();
@@ -25,6 +29,7 @@ namespace godot {
             Grid();
             ~Grid();
 
+            void _on_finished(int, String, String);
             void _init();
             void _ready();
             void init(int, int);
@@ -32,6 +37,10 @@ namespace godot {
             void touch_input();
 			int _rows;
 			int _columns;
+            std::map<String, Block*> blocks;
+            //NOTE: adjacent are for unsymmetrics shapes in place of blocks
+            //std::map<String, std::map<String, Block*>> adjacents;
+            std::vector<std::vector<Block*>> blocks_matrix;
         // TODO: define dynamic array of Blocks
         private:
             // REVIEW: may be make it const. determine effect on all scenerios.
