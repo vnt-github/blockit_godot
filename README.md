@@ -9,3 +9,6 @@ on ubisoft system make sure to use the nativescript1.1 branch for building
     - [ ] may be beacuse of -MDd in SConstruct CCFLAGS
 - [ ] research the godot-demo's multiplayer ping
 - [ ] research heartstone's architecture
+
+<!-- https://www.youtube.com/watch?v=L_34DWC7yzU -->
+- [ ] Nakama for networking
