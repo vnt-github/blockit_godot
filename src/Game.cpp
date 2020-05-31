@@ -36,6 +36,8 @@ void Game::_ready() {
 	Godot::print(String::num(grid_columns));
 	//godot::Grid* grid = Object::cast_to<godot::Grid>(GridScene->instance());
 	godot::Grid* new_grid = godot::Grid::_new();
+	// NOTE: no need below cos _new can emit signal
+	// godot::Grid* new_grid = static_cast<godot::Grid*>(GridScene->instance());
 	new_grid->init(grid_rows, grid_columns);
 	add_child(new_grid);
 	Array childrens = new_grid->get_children();
@@ -78,7 +80,12 @@ Game::~Game()
 }
 
 
-void Game::change_turn(int first_move) {
+void Game::change_turn(int first_move, String override_by) {
+	if (override_by != String("none")) {
+		Godot::print("OVERRRRRRRRRRRIIIIIIIIIIIDDDDDDDDDEEEEEEEEEE");
+		emit_signal("state_changed", state);
+		return;
+	}
 	if (state == (int)_states["first_turn"] || !state) {
 		Godot::print("null state");
 		Godot::print(String::num(state));
@@ -108,8 +115,8 @@ void Game::change_turn(int first_move) {
 }
 
 
-void Game::_on_finished(int first_move, String block_name) {
+void Game::_on_finished(int first_move, String block_name, String override_by) {
 	Godot::print("game _on_finished override");
 	Grid* grid_aux = grid;
-	change_turn(first_move);
+	change_turn(first_move, override_by);
 }

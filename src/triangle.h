@@ -16,6 +16,7 @@ namespace godot {
             Triangle();
             ~Triangle();
             
+            owners get_occupied_by();
             void init(Vector2, double);
             void _init();
             void _ready();

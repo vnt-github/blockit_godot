@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://block/Block.gdns" type="Script" id=1]
 [ext_resource path="res://art/white_block.png" type="Texture" id=2]
 [ext_resource path="res://triangle/Triangle.tscn" type="PackedScene" id=3]
-[ext_resource path="res://art/white_triangle.png" type="Texture" id=4]
 
 [node name="Block" type="Node2D"]
 scale = Vector2( 0.3, 0.3 )
@@ -19,7 +18,7 @@ margin_top = 60.0
 margin_right = 620.0
 margin_bottom = 250.0
 rect_rotation = 90.0
-texture_normal = ExtResource( 4 )
+texture_normal = null
 texture_hover = null
 
 [node name="TriangleRight" parent="." instance=ExtResource( 3 )]
@@ -28,7 +27,7 @@ margin_top = 440.0
 margin_right = 640.0
 margin_bottom = 630.0
 rect_rotation = -90.0
-texture_normal = ExtResource( 4 )
+texture_normal = null
 texture_hover = null
 
 [node name="TriangleDown" parent="." instance=ExtResource( 3 )]
@@ -36,7 +35,7 @@ margin_left = 60.0
 margin_top = 260.0
 margin_right = 440.0
 margin_bottom = 450.001
-texture_normal = ExtResource( 4 )
+texture_normal = null
 texture_hover = null
 
 [node name="TriangleUp" parent="." instance=ExtResource( 3 )]
@@ -45,6 +44,6 @@ margin_top = 240.0
 margin_right = 820.0
 margin_bottom = 430.0
 rect_rotation = 180.0
-texture_normal = ExtResource( 4 )
+texture_normal = null
 texture_hover = null
 

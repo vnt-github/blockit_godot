@@ -41,6 +41,19 @@ void Triangle::init(Vector2 pos, double rotation) {
     set_position(pos);
 }
 
+owners Triangle::get_occupied_by() {
+	ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
+	Ref<Resource> blackTriangle = resourceLoader->load("res://art/black_triangle.png");
+	Ref<Resource> whiteTriangle = resourceLoader->load("res://art/white_triangle.png");
+	Ref<Resource> normalTexture = get_normal_texture();
+	if (normalTexture == blackTriangle)
+		return owners::black;
+	else if (normalTexture == whiteTriangle)
+		return owners::white;
+	else
+		return owners::none;
+}
+
 void Triangle::_on_pressed() {
 	ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
 	String texture_path;

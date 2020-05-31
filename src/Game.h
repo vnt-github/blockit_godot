@@ -18,11 +18,11 @@ namespace godot {
             Game();
             ~Game();
 
-			void _on_finished(int, String);
+			void _on_finished(int, String, String);
             void init(int, int);
             void _init();
             void _ready();
-			void change_turn(int);
+			void change_turn(int, String);
         private:
             Ref<PackedScene> GridScene;
             Ref<PackedScene> BlockScene;

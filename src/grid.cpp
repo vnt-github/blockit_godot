@@ -26,6 +26,7 @@ void Grid::_register_methods() {
     register_method("_process", &Grid::_process, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("touch_input", &Grid::touch_input, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("_on_finished", &Grid::_on_finished, GODOT_METHOD_RPC_MODE_DISABLED);
+    register_signal<Grid>("change_turn", "first_move", "block_name", "override_by", GODOT_VARIANT_TYPE_STRING);
 
 	//TODO: fix below it's not exporting it to godot
 	register_property<Grid, Vector2>("grid_margins", &Grid::grid_margins, Vector2());
@@ -54,6 +55,8 @@ void Grid::_init() {
 }
 
 void Grid::_ready() {
+    Node* game = get_parent();
+    connect("change_turn", game, "_on_finished");
     Godot::print("=================_ready begin===============");
     Godot::print(String::num(this->_rows));
 	Godot::print(String::num(Grid::_rows));
@@ -119,20 +122,23 @@ void Grid::_process() {
 
 void Grid::_on_finished(int first_move, String block_name, String triangle_direction) {
     ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
-    Godot::print("game _on_finished override");
     Godot::print("triangle_direction");
     Godot::print(triangle_direction);
     Godot::print(bool(String("TriangleLeft") == triangle_direction));
     Block* block = blocks[block_name];
     Ref<Resource> blackTriangle = resourceLoader->load("res://art/black_triangle.png");
     Ref<Resource> whiteTriangle = resourceLoader->load("res://art/white_triangle.png");
-
+    Triangle* selectedTriangle = static_cast<Triangle*>(block->get_node(NodePath(triangle_direction)));
+    owners selected_occupied_by = selectedTriangle->get_occupied_by();
+    owners adjacent_occupied_by;
     if (triangle_direction == String("TriangleLeft")) {
         if (block->grid_j > 0) {
             Block* adjacent = blocks_matrix[block->grid_i][block->grid_j - 1];
+
             Triangle* TriangleAdjacent = static_cast<Triangle*>(adjacent->get_node("TriangleRight"));
             //TriangleAdjacent->set_normal_texture(blackTriangle);
-            TriangleAdjacent->set_visible(false);
+            //TriangleAdjacent->set_visible(false);
+            adjacent_occupied_by = TriangleAdjacent->get_occupied_by();
             Godot::print(block->get_path());
             Godot::print(adjacent->get_path());
             Godot::print(TriangleAdjacent->get_path());
@@ -142,7 +148,7 @@ void Grid::_on_finished(int first_move, String block_name, String triangle_direc
         if (block->grid_j < _columns - 1) {
             Block * adjacent = blocks_matrix[block->grid_i][block->grid_j + 1];
             Triangle* TriangleAdjacent = static_cast<Triangle*>(adjacent->get_node("TriangleLeft"));
-            TriangleAdjacent->set_visible(false);
+            adjacent_occupied_by = TriangleAdjacent->get_occupied_by();
             Godot::print(block->get_path());
             Godot::print(adjacent->get_path());
             Godot::print(TriangleAdjacent->get_path());
@@ -153,7 +159,7 @@ void Grid::_on_finished(int first_move, String block_name, String triangle_direc
             Block* adjacent = blocks_matrix[block->grid_i - 1][block->grid_j];
             Triangle* TriangleAdjacent = static_cast<Triangle*>(adjacent->get_node("TriangleDown"));
             //TriangleAdjacent->set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
-            TriangleAdjacent->set_visible(false);
+            adjacent_occupied_by = TriangleAdjacent->get_occupied_by();
             Godot::print(block->get_path());
             Godot::print(adjacent->get_path());
             Godot::print(TriangleAdjacent->get_path());
@@ -164,12 +170,39 @@ void Grid::_on_finished(int first_move, String block_name, String triangle_direc
             Block* adjacent = blocks_matrix[block->grid_i + 1][block->grid_j];
             Triangle* TriangleAdjacent = static_cast<Triangle*>(adjacent->get_node("TriangleUp"));
             //TriangleAdjacent->set_normal_texture(resourceLoader->load(String("res://art/white_triangle.png")));
-            TriangleAdjacent->set_visible(false);
+            adjacent_occupied_by = TriangleAdjacent->get_occupied_by();
             Godot::print(block->get_path());
             Godot::print(adjacent->get_path());
             Godot::print(TriangleAdjacent->get_path());
         }
     }
+
+    Triangle* selectedTriangleLeft = static_cast<Triangle*>(block->get_node("TriangleLeft"));
+    Triangle* selectedTriangleRight = static_cast<Triangle*>(block->get_node("TriangleRight"));
+    Triangle* selectedTriangleUp = static_cast<Triangle*>(block->get_node("TriangleUp"));
+    Triangle* selectedTriangleDown = static_cast<Triangle*>(block->get_node("TriangleDown"));
+
+
+    String override_by;
+    if (adjacent_occupied_by == selected_occupied_by || 
+        (
+            selectedTriangleLeft->get_occupied_by() == selectedTriangleRight->get_occupied_by() &&
+            selectedTriangleRight->get_occupied_by() == selectedTriangleUp->get_occupied_by() &&
+            selectedTriangleUp->get_occupied_by() == selectedTriangleDown->get_occupied_by()
+        )) {
+        switch (selected_occupied_by)
+        {
+        case owners::black:
+            override_by = String("black");
+        case owners::white:
+            override_by = String("white");
+        }
+    }
+    else {
+        override_by = String("none");
+    }
+   
+    emit_signal("change_turn", first_move, block_name, override_by);
 
 
     /*if (triangle_direction == String("TriangleLeft")) {

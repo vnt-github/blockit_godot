@@ -24,6 +24,8 @@ void Block::_register_methods() {
     register_method("init", &Block::init);
 	register_method("_on_finished", &Block::_on_finished);
 	register_property<Block, int64_t>("block_type", &Block::block_type, 0, GODOT_METHOD_RPC_MODE_DISABLED);
+	register_property<Block, int>("grid_i", &Block::grid_i, 0, GODOT_METHOD_RPC_MODE_DISABLED);
+	register_property<Block, int>("grid_j", &Block::grid_j, 0, GODOT_METHOD_RPC_MODE_DISABLED);
 }
 
 Block::Block() {
@@ -40,7 +42,7 @@ void Block::_init() {
 void Block::init(int _grid_i, int _grid_j, Vector2 pos) {
 	grid_i = _grid_i;
 	grid_j = _grid_j;
-    set_position(pos);
+	set_position(pos);
 	// set_scale(Vector2(0.3, 0.3));
     //Sprite* block = static_cast<Sprite*>(get_node("Sprite"));
     //TextureButton* TriangleLeftNode = static_cast<TextureButton*>(get_node("TriangleLeft"));
@@ -63,6 +65,7 @@ void Block::init(int _grid_i, int _grid_j, Vector2 pos) {
 
 
 void Block::_ready() {
+	//NOTE: here the grid_i and grid_j are not available as initialized in init() they'll only be if we use _new() inplace of instance()
 	ResourceLoader* resourceLoader = ResourceLoader::get_singleton();
 	// NOTE: below won't work and will behave the same
 	// Triangle* TriangleLeftTexture = static_cast<Triangle*>(get_node("TriangleLeft"));
@@ -95,10 +98,9 @@ void Block::_ready() {
 	}
 
 	Node* game = get_parent()->get_parent();
-	Node* grid = get_parent();
+	Grid* grid = static_cast<Grid*>(get_parent());
 	//TriangleLeft->set_normal_texture(blackTriangle);
 	TriangleLeft->set_hover_texture(hover_resource);
-	TriangleLeft->connect("finished", game, "_on_finished");
 	TriangleLeft->connect("finished", grid, "_on_finished");
 	TriangleLeft->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleLeft, "_on_state_changed");
@@ -106,7 +108,6 @@ void Block::_ready() {
 
 	//TriangleRight->set_normal_texture(blackTriangle);
 	TriangleRight->set_hover_texture(hover_resource);
-	TriangleRight->connect("finished", game, "_on_finished");
 	TriangleRight->connect("finished", grid, "_on_finished");
 	TriangleRight->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleRight, "_on_state_changed");
@@ -114,7 +115,6 @@ void Block::_ready() {
 	
 	//TriangleUp->set_normal_texture(blackTriangle);
 	TriangleUp->set_hover_texture(hover_resource);
-	TriangleUp->connect("finished", game, "_on_finished");
 	TriangleUp->connect("finished", grid, "_on_finished");
 	TriangleUp->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleUp, "_on_state_changed");
@@ -124,7 +124,6 @@ void Block::_ready() {
 
 	//TriangleDown->set_normal_texture(blackTriangle);
 	TriangleDown->set_hover_texture(hover_resource);
-	TriangleDown->connect("finished", game, "_on_finished");
 	TriangleDown->connect("finished", grid, "_on_finished");
 	TriangleDown->connect("finished", this, "_on_finished");
 	game->connect("state_changed", TriangleDown, "_on_state_changed");
